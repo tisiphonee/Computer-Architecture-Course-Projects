@@ -1,7 +1,7 @@
-# Computer Architecture Course Projects and Homework
+# Computer Architecture Course Projects 
 
 ## Table of Contents
 
 - [Projects](#projects)
-- [Homework](#homework)
+
 
