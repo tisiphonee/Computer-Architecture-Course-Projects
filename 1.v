@@ -17,36 +17,16 @@ module fixed_point_division
    reg [9:0] Q;
    reg [10:0] ACC_next;
    reg [9:0] Q_next;
+   wire gT;
+   wire [3:0] counter_out;
 
-   always @(posedge clk or posedge rst)
-   begin
-      if (rst)
-      begin
-         ACC <= 11'b0;
-         Q <= 10'b0;
-         ov <= 0;
-      end
-      else if (start)
-      begin
-         {ACC_next, Q_next} = {ACC[9:0], Q, 1'b0};
 
-         if (ACC >= {1'b0, local_B})
-         begin
-            ACC_next = ACC - {1'b0, local_B};
-            {ACC_next, Q_next} = {ACC_next[9:0], Q, 1'b1};
-         end
 
-         if (Q_next[9:4] != 0)
-         begin
-            ov = 1;
-         end
-         else
-         begin
-            ACC = ACC_next;
-            Q = Q_next;
-         end
-      end
-   end
+
+   mod_14_CNT(clk,rst,counter_out);
+   assign gT = (ACC >= {1'b0, B});
+   assign ov = (counter_out == 4'b1001) && (Q_next[9:4] != 6'b000000);
+
 
    always @(posedge clk or posedge rst)
    begin
@@ -75,3 +55,18 @@ module fixed_point_division
    assign q = Q;
 
 endmodule
+
+
+module mod_14_CNT(input clk,rst ,output reg [3:0] count);
+   always@(posedge clk or posedge rst)
+   begin 
+      if(rst)
+        count<=4'b0;
+      else if (count == 4'b1101)
+         count<=4'b0;
+      else 
+          count <= count + 1;
+   end
+endmodule
+
+

@@ -2,3 +2,7 @@
 *.mpf
 /work
 vsim.wlf
+comment.v
+.gitignore
+/.gitignore
+.gitignore
