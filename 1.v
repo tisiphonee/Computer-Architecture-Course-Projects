@@ -15,11 +15,11 @@ module fixed_point_division
    wire [9:0] b_reg_out;
    reg [10:0] ACC;
    reg [9:0] Q;
-   reg [10:0] ACC_next;
+   wire [10:0] ACC_next;
    reg [9:0] Q_next;
    wire gT;
    wire [3:0] counter_out;
-
+   wire  [10:0] sub_result;
 
    mod_14_CNT counter(clk,rst,counter_out);
 
@@ -27,6 +27,10 @@ module fixed_point_division
    Register register_b(clk, rst, ld_b, B, b_reg_out);
    comparator comp_ACC_B(clk,ACC,b_reg_out,gT);
    overflow_detector ov_detecor(clk,counter_out,Q_next,ov);
+
+   #Main section:   
+   scsubtractor sub(clk,gT,ACC_next,B,sub_result);
+   
 
 
 endmodule
