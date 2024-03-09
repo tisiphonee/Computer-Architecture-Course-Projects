@@ -10,22 +10,22 @@ module fixed_point_division
    output reg [9:0] q,
    output ov
    );
-  ## Wires: 
+  // # Wires: 
    wire [9:0] a_reg_out;
    wire [9:0] b_reg_out;
    wire [10:0] ACC_next;
    wire gT;
    wire [3:0] counter_out;
    wire  [10:0] sub_result;
-  ### Regs: 
+  // # Regs: 
    reg [10:0] ACC;
    reg [9:0] Q;
    reg [9:0] Q_next;
-  #################################
-  # Not defined Yet : 
+  // #################################
+  // # Not defined Yet : 
   wire ld_q;
-  ## RegisterQ lds signal 
-  #################################
+  // ## RegisterQ lds signal 
+  // #################################
 
    mod_14_CNT counter(clk,rst,counter_out);
 
@@ -34,7 +34,7 @@ module fixed_point_division
    comparator comp_ACC_B(clk,ACC,b_reg_out,gT);
    overflow_detector ov_detecor(clk,counter_out,Q_next,ov);
 
-   #Main section:   
+  // #Main section:   
    scsubtractor sub(clk,gT,ACC_next,B,sub_result);
    RegisterACC acc_reg(clk,rst,ld_q,A,Q_next,ACC,ACC_next);
    RegisterQ q_reg(clk,rst,gT,~gT,A,Q,Q_next);
