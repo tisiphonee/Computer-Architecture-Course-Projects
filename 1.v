@@ -8,7 +8,8 @@ module fixed_point_division
    input [9:0] A,
    input [9:0] B, 
    output  [9:0] Q_next,
-   output ov
+   output ov,
+   output CO_CNT
    );
   // # Wires: 
    wire [9:0] a_reg_out;
@@ -16,7 +17,6 @@ module fixed_point_division
    wire [10:0] ACC_next;
    wire gT;
    wire dvz;
-   wire CO_CNT;
    wire [3:0] counter_out;
    wire  [10:0] sub_result;
   // #################################
