@@ -1,16 +1,17 @@
 `timescale 1ns/1ns
-module RegisterQ(clock, rst, ldgt, A, data_in, data_out);
+module RegisterQ(clock, rst, loading_done, ldgt, A, data_in, data_out);
 
 input            clock;
 input            rst;
 input            ldgt;
+input            loading_done;
 input      [9:0]  A;
 input      [9:0] data_in;
 output reg [9:0] data_out;
 
 always @(posedge clock)
 begin
-    if(rst)
+    if(rst && loading_done)
         data_out <= {A[8:0], 1'b0};
     else
 	if(ldgt)

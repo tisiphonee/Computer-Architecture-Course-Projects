@@ -1,29 +1,26 @@
 module fixed_point_division
   (
    input clk, 
-   input rst,  
+   input rst, 
+   input loading_done, 
    input start,
    input ld_a,
    input ld_b,
    input [9:0] A,
    input [9:0] B, 
    output  [9:0] Q_next,
-   output ov,
+   output ov, 
+   output gT, 
+   output dvz,
    output CO_CNT
    );
   // # Wires: 
    wire [9:0] a_reg_out;
    wire [9:0] b_reg_out;
    wire [10:0] ACC_next;
-   wire gT;
-   wire dvz;
    wire [3:0] counter_out;
    wire  [10:0] sub_result;
-  // #################################
-  // # Not defined Yet : 
-  // wire ld_q;
-  // ## RegisterQ lds signal 
-  // #################################
+  
    assign dvz = ~|b_reg_out;
    mod_14_CNT counter(clk,rst,counter_out,CO_CNT);
 
@@ -34,8 +31,8 @@ module fixed_point_division
 
   // #Main section:   
   subtractor sub(clk,gT,ACC_next,B,sub_result);
-  RegisterACC acc_reg(clk,rst,gT,A,Q_next,ACC_next,sub_result,ACC_next);
-  RegisterQ q_reg(clk,rst,gT,A,Q_next,Q_next);
+  RegisterACC acc_reg(clk,rst,loading_done,gT,a_reg,Q_next,ACC_next,sub_result,ACC_next);
+  RegisterQ q_reg(clk,rst,loading_done,gT,a_reg,Q_next,Q_next);
 
 endmodule
 
