@@ -63,6 +63,7 @@ always @(posedge clk) begin
                 end else begin
                     next_state = DONE;
                     valid <= 1;
+                    loading_done<=0;
                 end
             end
             else if (gT) begin 
@@ -85,6 +86,7 @@ always @(posedge clk) begin
                 end else begin
                     next_state = DONE;
                     valid <= 1;
+                    loading_done<=0;
                 end
             end else begin
                 next_state = DIVIDE;

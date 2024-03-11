@@ -22,8 +22,8 @@ module testbench;
    
    initial
    begin
-      A = 10'b1001010010;
-      B = 10'b0001100100;
+      A = 10'b0001101110;
+      B = 10'b0000000011;
       loading_done=0;
       rst = 1; start = 0; ld_a = 1; ld_b = 1;
       #3 loading_done=1;
