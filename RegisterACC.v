@@ -1,5 +1,5 @@
 `timescale 1ns/1ns
-module RegisterACC(clock, rst, ldQ, A, Q, data_in, data_out);
+module RegisterACC(clock, rst, ld, A, Q, data_in, sub_result, data_out);
 
 input            clock;
 input            rst;
@@ -14,7 +14,9 @@ begin
     if(rst)
         data_out <= {10'b0, A[9]};
     else
-	if(ldQ)
+	if(ld)
+		data_out<= {sub_result[9:0], Q[9]};
+	else
 		data_out<= {data_in[9:0], Q[9]};
 end
 
