@@ -1,41 +1,46 @@
-`timescale 1ns/1ns
+module fixed_point_division
+  (
+   input clk, 
+   input rst,  
+   input start,
+   input ld_a,
+   input ld_b,
+   input [9:0] A,
+   input [9:0] B, 
+   output reg [9:0] q,
+   output ov
+   );
+  // # Wires: 
+   wire [9:0] a_reg_out;
+   wire [9:0] b_reg_out;
+   wire [10:0] ACC_next;
+   wire gT;
+   wire [3:0] counter_out;
+   wire  [10:0] sub_result;
+  // # Regs: 
+   reg [10:0] ACC;
+   reg [9:0] Q;
+   wire [9:0] Q_next;
+  // #################################
+  // # Not defined Yet : 
+  // wire ld_q;
+  // ## RegisterQ lds signal 
+  // #################################
 
-module testbench;
+   mod_14_CNT counter(clk,rst,counter_out);
 
-   reg clk;
-   reg rst;
-   reg start;
-   reg ld_a;
-   reg ld_b;
-   reg [9:0] A;
-   reg [9:0] B;
-   wire [9:0] q;
-   wire ov;
+   Register register_a(clk, rst, ld_a, A, a_reg_out);
+   Register register_b(clk, rst, ld_b, B, b_reg_out);
+   comparator comp_ACC_B(clk,ACC,b_reg_out,gT);
+   overflow_detector ov_detecor(clk,counter_out,Q_next,ov);
 
-   fixed_point_division  uut(clk, rst, start, ld_a, ld_b, A, B, q, ov);
-   assign clk = 0;
-   initial
-   begin
-      forever #5 clk = ~clk;
-   end
-
-   initial
-   begin
-      A = 10'b0000100000;  
-      B = 10'b0000010000; 
-      rst = 1;
-      start = 0;
-      ld_a = 1;
-      ld_b = 1;
-
-      #10 rst = 0;
-      start = 0;
-      #30;
-
-      $display("time=%0t, A=%b, B=%b, q=%b, ov=%b", $time, A, B, q, ov);
-      #100;
-      $display("time=%0t, A=%b, B=%b, q=%b, ov=%b", $time, A, B, q, ov);
-      $stop;
-   end
+  // #Main section:   
+  subtractor sub(clk,gT,ACC_next,B,sub_result);
+  RegisterACC acc_reg(clk,rst,gt,A,Q_next,ACC,sub_result,ACC_next);
+  RegisterQ q_reg(clk,rst,gT,A,Q,Q_next);
 
 endmodule
+
+
+
+
