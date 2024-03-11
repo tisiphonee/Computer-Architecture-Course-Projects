@@ -1,8 +1,7 @@
 `timescale 1ns/1ns
-module Register(clock, rst, ld, data_in, data_out);
+module Register(clock, ld, data_in, data_out);
 
 input            clock;
-input            rst;
 input            ld;
 input      [9:0] data_in;
 output  reg [9:0] data_out;
