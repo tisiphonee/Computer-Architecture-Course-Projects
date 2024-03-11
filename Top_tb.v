@@ -14,8 +14,8 @@ module testbench_top;
    initial
    begin
         A = 10'b0000100000;
-    //   B = 10'b0000010000;
-      B = 10'b0;
+      B = 10'b0000010000;
+    //   B = 10'b0;
 
       rst = 1; start = 0; 
       #10 rst = 0; start = 1; #170; $display("%bQ=%b", valid, Q);

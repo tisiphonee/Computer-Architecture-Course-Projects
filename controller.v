@@ -30,6 +30,8 @@ always @(posedge clk) begin
     case (state)
         IDLE: begin
             if (start) begin
+                ld_a <= 1;
+                ld_b <= 1;
                 next_state = LOADING;
             end else begin
                 next_state = IDLE;
@@ -38,8 +40,6 @@ always @(posedge clk) begin
 
         LOADING: begin
 	       loading_done <= 1;
-            ld_a <= 1;
-            ld_b <= 1;
             busy <= 1;
             rst <= 1;
             next_state = CHECK_DIVISOR;
