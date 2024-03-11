@@ -1,5 +1,5 @@
 `timescale 1ns/1ns
-module RegisterQ(clock, rst, ldgt, lds, A, data_in, data_out);
+module RegisterQ(clock, rst, ldgt, A, data_in, data_out);
 
 input            clock;
 input            rst;
@@ -17,8 +17,7 @@ begin
 	if(ldgt)
 		data_out<= {data_in[8:0], 1'b1};
 	else
-		if(lds)
-			data_out<= {data_in[8:0], 1'b0};
+		data_out<= {data_in[8:0], 1'b0};
 end
 
 endmodule
