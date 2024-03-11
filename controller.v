@@ -57,7 +57,15 @@ always @(posedge clk) begin
 
         DIVIDE: begin
             busy <= 1;
-            if (gT) begin 
+            if (CO_CNT || ovf) begin
+                if (ovf) begin
+                    next_state = IDLE;
+                end else begin
+                    next_state = DONE;
+                    valid <= 1;
+                end
+            end
+            else if (gT) begin 
                 next_state = SUB;
             end else begin
                 next_state = SHIFT_LEFT;
@@ -76,6 +84,7 @@ always @(posedge clk) begin
                     next_state = IDLE;
                 end else begin
                     next_state = DONE;
+                    valid <= 1;
                 end
             end else begin
                 next_state = DIVIDE;
@@ -84,7 +93,6 @@ always @(posedge clk) begin
 
         DONE: begin
             busy <= 1;
-            valid <= 1;
             next_state = IDLE;
         end
 

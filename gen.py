@@ -23,7 +23,7 @@ for _ in range(100):
 with open('input.txt', 'w') as file:
     for A, B, Q in data:
         file.write(
-            f'A = 10\'b{A};\nB = 10\'b{B};\nrst = 1; start = 0; ld_a = 1; ld_b = 1;\n\n#10 rst = 0; start = 0; #140; $display("%bQ=%b", CO_CNT, Q);\n\n')
+            f'A = 10\'b{A};\nB = 10\'b{B};\nrst = 1; start = 0;\n\n#10 rst = 0; start = 1; #178; $display("%bQ=%b", valid, Q);\n\n')
 
 with open('output.txt', 'w') as file:
     for A, B, Q in data:
