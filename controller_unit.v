@@ -24,14 +24,13 @@ reg [2:0] state, next_state;
 
 always @(posedge clk) begin
     next_state = state;
+    {busy, ld_a, ld_b, init_counter, valid} = 0;
     case (state)
         IDLE: begin
             if (start) begin
                 next_state = LOADING;
-                busy  <= 0;  
             end else begin
                 next_state = IDLE;
-                busy <= 0;
             end
         end
 
@@ -44,9 +43,6 @@ always @(posedge clk) begin
         end
 
         CHECK_DIVISOR: begin
-            ld_a <= 0;
-            ld_b <= 0;
-            init_counter <= 0;
             if (dvz) begin
                 next_state = IDLE;
                 busy <= 0;
@@ -71,7 +67,6 @@ always @(posedge clk) begin
 
         SHIFT_LEFT: begin
             if (CO_CNT || ovf) begin
-                busy <= 0;
                 if (ovf) begin
                     next_state = IDLE;
                 end else begin
