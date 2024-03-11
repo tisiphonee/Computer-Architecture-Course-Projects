@@ -9,9 +9,6 @@ output  reg [9:0] data_out;
 
 always @(posedge clock)
 begin
-    if(rst)
-        data_out <= 10'b0;
-    else
 	if(ld)
 		data_out<= data_in;
 end
