@@ -1,4 +1,4 @@
-module fixed_point_division
+module fixed_point_division2
   (
    input clk, 
    input rst, 
@@ -30,9 +30,9 @@ module fixed_point_division
    overflow_detector ov_detecor(clk,counter_out,Q_next,ov);
 
   // #Main section:   
-  subtractor sub(clk,gT,ACC_next,b_reg_out,sub_result);
-  RegisterACC acc_reg(clk,rst,loading_done,gT,a_reg_out,Q_next,ACC_next,sub_result,ACC_next);
-  RegisterQ q_reg(clk,rst,loading_done,gT,a_reg_out,Q_next,Q_next);
+  subtractor sub(clk,gT,ACC_next,B,sub_result);
+  RegisterACC acc_reg(clk,rst,loading_done,gT,A,Q_next,ACC_next,sub_result,ACC_next);
+  RegisterQ q_reg(clk,rst,loading_done,gT,A,Q_next,Q_next);
 
 endmodule
 

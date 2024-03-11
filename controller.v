@@ -23,9 +23,10 @@ parameter DONE = 3'b110;
 
 reg [2:0] state, next_state;
 
+
 always @(posedge clk) begin
     next_state = state;
-    {busy, ld_a, ld_b, rst, valid, loading_done} = 0;
+    {busy, ld_a, ld_b, rst, valid} = 0;
     case (state)
         IDLE: begin
             if (start) begin
@@ -44,6 +45,7 @@ always @(posedge clk) begin
         end
 
         CHECK_DIVISOR: begin
+	       loading_done = 1;
             if (dvz) begin
                 next_state = IDLE;
                 busy <= 0;
@@ -54,7 +56,6 @@ always @(posedge clk) begin
         end
 
         DIVIDE: begin
-	    loading_done = 1;
             busy <= 1;
             if (gT) begin 
                 next_state = SUB;

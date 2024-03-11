@@ -16,9 +16,9 @@ begin
     if(rst && loading_done)
         data_out <= {10'b0, A[9]};
     else
-	if(ld)
+	if(ld && loading_done)
 		data_out<= {sub_result[9:0], Q[9]};
-	else
+	else if(loading_done)
 		data_out<= {data_in[9:0], Q[9]};
 end
 

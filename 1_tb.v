@@ -24,9 +24,10 @@ module testbench;
    begin
       A = 10'b1001010010;
       B = 10'b0001100100;
-      rst = 1; start = 0; ld_a = 1; ld_b = 1;
       loading_done=0;
-      #10 rst = 0; start = 0;#20 loading_done=1; #140; $display("%bQ=%b", CO_CNT, Q);
+      rst = 1; start = 0; ld_a = 1; ld_b = 1;
+      #3 loading_done=1;
+      #10 rst = 0; start = 0; #140; $display("%bQ=%b", CO_CNT, Q);
       $stop;
    end
 

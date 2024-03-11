@@ -14,9 +14,9 @@ begin
     if(rst && loading_done)
         data_out <= {A[8:0], 1'b0};
     else
-	if(ldgt)
+	if(ldgt && loading_done)
 		data_out<= {data_in[8:0], 1'b1};
-	else
+	else if(loading_done)
 		data_out<= {data_in[8:0], 1'b0};
 end
 
