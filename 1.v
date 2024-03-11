@@ -20,10 +20,10 @@ module fixed_point_division
   // # Regs: 
    reg [10:0] ACC;
    reg [9:0] Q;
-   reg [9:0] Q_next;
+   wire [9:0] Q_next;
   // #################################
   // # Not defined Yet : 
-  wire ld_q;
+  // wire ld_q;
   // ## RegisterQ lds signal 
   // #################################
 
@@ -36,11 +36,10 @@ module fixed_point_division
 
   // #Main section:   
   subtractor sub(clk,gT,ACC_next,B,sub_result);
-  RegisterACC acc_reg(clk,rst,ld_q,A,Q_next,ACC,sub_result,ACC_next);
+  RegisterACC acc_reg(clk,rst,gt,A,Q_next,ACC,sub_result,ACC_next);
   RegisterQ q_reg(clk,rst,gT,A,Q,Q_next);
 
 endmodule
-
 
 
 
