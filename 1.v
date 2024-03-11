@@ -26,8 +26,8 @@ module fixed_point_division
 
    mod_14_CNT counter(clk,rst,counter_out,CO_CNT);
 
-   Register register_a(clk, rst, ld_a, A, a_reg_out);
-   Register register_b(clk, rst, ld_b, B, b_reg_out);
+   Register register_a(clk, ld_a, A, a_reg_out);
+   Register register_b(clk, ld_b, B, b_reg_out);
    comparator comp_ACC_B(clk,ACC_next,b_reg_out,gT);
    overflow_detector ov_detecor(clk,counter_out,Q_next,ov);
 
