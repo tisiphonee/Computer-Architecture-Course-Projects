@@ -4,7 +4,6 @@ module RegisterQ(clock, rst, ldgt, A, data_in, data_out);
 input            clock;
 input            rst;
 input            ldgt;
-input            lds;
 input      [9:0]  A;
 input      [9:0] data_in;
 output reg [9:0] data_out;
