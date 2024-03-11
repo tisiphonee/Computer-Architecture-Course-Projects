@@ -64,10 +64,12 @@ always @(posedge clk) begin
         end
 
         SUB: begin
+            busy <= 1;
             next_state = SHIFT_LEFT;
         end
 
         SHIFT_LEFT: begin
+            busy <= 1;
             if (CO_CNT || ovf) begin
                 if (ovf) begin
                     next_state = IDLE;
@@ -80,6 +82,7 @@ always @(posedge clk) begin
         end
 
         DONE: begin
+            busy <= 1;
             valid <= 1;
             next_state = IDLE;
         end
