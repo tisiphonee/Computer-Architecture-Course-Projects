@@ -5,8 +5,6 @@ module overflow_detector (
   output reg ov
 );
 
-  always @(posedge clk) begin
-    ov <= (counter_out == 4'b1001) && (Q_next[9:4] != 6'b000000);
-  end
+  assign  ov = (counter_out == 4'b1001) && (Q_next[9:4] != 6'b000000);
 
 endmodule
