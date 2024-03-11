@@ -33,8 +33,8 @@ module fixed_point_division
 
   // #Main section:   
   subtractor sub(clk,gT,ACC_next,B,sub_result);
-  RegisterACC acc_reg(clk,rst,gT,A,Q_next,ACC_next,sub_result,ACC_next);
-  RegisterQ q_reg(clk,rst,gT,A,Q_next,Q_next);
+  RegisterACC acc_reg(clk,rst,gT,a_reg_out,Q_next,ACC_next,sub_result,ACC_next);
+  RegisterQ q_reg(clk,rst,gT,a_reg_out,Q_next,Q_next);
 
 endmodule
 
