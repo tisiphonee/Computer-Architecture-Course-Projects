@@ -35,9 +35,9 @@ module fixed_point_division
    overflow_detector ov_detecor(clk,counter_out,Q_next,ov);
 
   // #Main section:   
-   scsubtractor sub(clk,gT,ACC_next,B,sub_result);
-   RegisterACC acc_reg(clk,rst,ld_q,A,Q_next,ACC,ACC_next);
-   RegisterQ q_reg(clk,rst,gT,~gT,A,Q,Q_next);
+  subtractor sub(clk,gT,ACC_next,B,sub_result);
+  RegisterACC acc_reg(clk,rst,ld_q,A,Q_next,ACC,sub_result,ACC_next);
+  RegisterQ q_reg(clk,rst,gT,A,Q,Q_next);
 
 endmodule
 
