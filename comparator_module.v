@@ -5,8 +5,6 @@ module comparator (
   output reg gT
 );
 
-  always @(posedge clk) begin
-    gT <= (ACC >= {1'b0, b_reg_out});
-  end
+  assign gT = (ACC >= {1'b0, b_reg_out});
 
 endmodule
