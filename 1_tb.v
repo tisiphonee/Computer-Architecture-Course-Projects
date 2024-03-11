@@ -29,7 +29,7 @@ module testbench;
 
       #10 rst = 0;
       start = 0;
-      #70;
+      #700;
 
       //#$display("time=%0t, A=%b, B=%b, q=%b, ov=%b", $time, A, B, q, ov);
       //#100;
