@@ -3,10 +3,11 @@ module RegisterACC(clock, rst, ld, A, Q, data_in, sub_result, data_out);
 
 input            clock;
 input            rst;
-input            ldQ;
+input            ld;
 input      [9:0]  A;
 input      [9:0]  Q;
 input      [10:0] data_in;
+input      [10:0] sub_result;
 output reg [10:0] data_out;
 
 always @(posedge clock)
