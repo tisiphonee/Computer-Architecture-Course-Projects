@@ -1,5 +1,5 @@
 `timescale 1ns/1ns
-module scsubtractor(clock, sub, ACC, B, result);
+module subtractor(clock, sub, ACC, B, result);
 
 input            clock;
 input            sub;

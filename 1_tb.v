@@ -9,7 +9,6 @@ module testbench;
    reg ld_b;
    reg [9:0] A;
    reg [9:0] B;
-   wire [9:0] q;
    wire ov;
 
    fixed_point_division  uut(clk, rst, start, ld_a, ld_b, A, B, q, ov);
