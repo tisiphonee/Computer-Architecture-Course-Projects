@@ -37,6 +37,7 @@ always @(posedge clk) begin
         end
 
         LOADING: begin
+	       loading_done <= 1;
             ld_a <= 1;
             ld_b <= 1;
             busy <= 1;
@@ -45,7 +46,6 @@ always @(posedge clk) begin
         end
 
         CHECK_DIVISOR: begin
-	       loading_done = 1;
             if (dvz) begin
                 next_state = IDLE;
                 busy <= 0;

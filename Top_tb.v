@@ -5,7 +5,6 @@ module testbench_top;
    reg [9:0] A, B;
    wire ov;
    wire [9:0] Q;
-    reg loading_done;
     wire busy , valid;
    div_top uut (clk,start,A, B, Q, busy, valid,ov);
 
@@ -14,12 +13,12 @@ module testbench_top;
 
    initial
    begin
-      A = 10'b1001010010;
-      B = 10'b0001100100;
-      loading_done=0;
+        A = 10'b0000100000;
+    //   B = 10'b0000010000;
+      B = 10'b0;
+
       rst = 1; start = 0; 
-      #3 loading_done=1;
-      #10 rst = 0; start = 1; #140; $display("%bQ=%b", valid, Q);
+      #10 rst = 0; start = 1; #170; $display("%bQ=%b", valid, Q);
       $stop;
    end
 
