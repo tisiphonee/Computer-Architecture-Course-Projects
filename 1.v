@@ -15,6 +15,7 @@ module fixed_point_division
    wire [9:0] b_reg_out;
    wire [10:0] ACC_next;
    wire gT;
+   wire CO_CNT;
    wire [3:0] counter_out;
    wire  [10:0] sub_result;
   // #################################
@@ -23,7 +24,7 @@ module fixed_point_division
   // ## RegisterQ lds signal 
   // #################################
 
-   mod_14_CNT counter(clk,rst,counter_out);
+   mod_14_CNT counter(clk,rst,counter_out,CO_CNT);
 
    Register register_a(clk, rst, ld_a, A, a_reg_out);
    Register register_b(clk, rst, ld_b, B, b_reg_out);

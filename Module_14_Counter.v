@@ -1,12 +1,21 @@
 `timescale 1ns/1ns
-module mod_14_CNT(input clk,rst ,output reg [3:0] count);
-   always@(posedge clk or posedge rst)
+module mod_14_CNT(input clk,rst ,output reg [3:0] count,output reg carry_out);
+   always @(posedge clk or posedge rst)
    begin 
-      if(rst)
-        count<=4'b0;
+      if (rst)
+      begin
+         count <= 4'b0;
+         carry_out <= 1'b0;
+      end
       else if (count == 4'b1101)
-         count<=4'b0;
+      begin
+         count <= 4'b0;
+         carry_out <= 1'b1;
+      end
       else 
-          count <= count + 1;
+      begin
+         count <= count + 1;
+         carry_out <= 1'b0;
+      end
    end
 endmodule
