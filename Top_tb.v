@@ -16,9 +16,10 @@ module testbench_top;
       A = 10'b0001101110;
       B = 10'b0000000011;
     //   B = 10'b0;
-
+    //   A = 10'b0000100000;
+    //   B = 10'b0000010000;
       rst = 1; start = 0; 
-      #10 rst = 0; start = 1; #170; $display("%bQ=%b", valid, Q);
+      #10 rst = 0; start = 1; #900; $display("%bQ=%b", valid, Q);
       $stop;
    end
 

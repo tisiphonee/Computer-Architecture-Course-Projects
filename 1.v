@@ -6,6 +6,8 @@ module fixed_point_division2
    input start,
    input ld_a,
    input ld_b,
+   input shift,
+   input count_enable,
    input [9:0] A,
    input [9:0] B, 
    output  [9:0] Q_next,
@@ -20,9 +22,9 @@ module fixed_point_division2
    wire [10:0] ACC_next;
    wire [3:0] counter_out;
    wire  [10:0] sub_result;
-  
+   
    assign dvz = ~|b_reg_out;
-   mod_14_CNT counter(clk,rst,counter_out,CO_CNT);
+   mod_14_CNT counter(clk,rst,count_enable,counter_out,CO_CNT);
 
    Register register_a(clk,ld_a, A, a_reg_out);
    Register register_b(clk, ld_b, B, b_reg_out);
@@ -31,8 +33,8 @@ module fixed_point_division2
 
   // #Main section:   
   subtractor sub(clk,gT,ACC_next,b_reg_out,sub_result);
-  RegisterACC acc_reg(clk,rst,loading_done,gT,a_reg_out,Q_next,ACC_next,sub_result,ACC_next);
-  RegisterQ q_reg(clk,rst,loading_done,gT,a_reg_out,Q_next,Q_next);
+  RegisterACC acc_reg(clk,rst,loading_done,gT,shift,a_reg_out,Q_next,ACC_next,sub_result,ACC_next);
+  RegisterQ q_reg(clk,rst,loading_done,gT,shift,a_reg_out,Q_next,Q_next);
 
 endmodule
 

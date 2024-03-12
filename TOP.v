@@ -10,10 +10,10 @@ output valid,
 output ovf
 );
 
-wire rst, loading_done, ld_a, ld_b, gT, dvz, CO_CNT; 
+wire rst, loading_done, ld_a, ld_b, gT, dvz, CO_CNT,shift,count_enable; 
 
-fixed_point_division2 CUT1(clk, rst, loading_done,start,ld_a,ld_b,A,B,Q_next,ovf,gT, dvz,CO_CNT);
+fixed_point_division2 CUT1(clk, rst, loading_done,start,ld_a,ld_b,shift,count_enable,A,B,Q_next,ovf,gT, dvz,CO_CNT);
 
-div_CU CUT2 (clk,start,dvz,gT,CO_CNT,ovf,busy,ld_a,ld_b,rst,valid,loading_done);
+div_CU CUT2 (clk,start,dvz,gT,CO_CNT,ovf,busy,ld_a,ld_b,rst,valid,loading_done,shift,count_enable);
 
 endmodule

@@ -10,7 +10,9 @@ module div_CU (
     output reg ld_b,
     output reg rst,
     output reg valid,
-    output reg loading_done
+    output reg loading_done,
+    output reg shift,
+    output reg count_enable
 );
 
 parameter IDLE = 3'b000;
@@ -26,7 +28,7 @@ reg [2:0] state, next_state;
 
 always @(posedge clk) begin
     next_state = state;
-    {busy, ld_a, ld_b, rst, valid} = 0;
+    {busy, ld_a, ld_b, rst, valid,shift,count_enable} = 0;
     case (state)
         IDLE: begin
             if (start) begin
@@ -56,26 +58,20 @@ always @(posedge clk) begin
         end
 
         DIVIDE: begin
+            count_enable<=1;
             busy <= 1;
-            if (CO_CNT || ovf) begin
-                if (ovf) begin
-                    next_state = IDLE;
-                end else begin
-                    next_state = DONE;
-                    valid <= 1;
-                    loading_done<=0;
-                end
-            end
-            else if (gT) begin 
+             if (gT) begin 
                 next_state = SUB;
             end else begin
                 next_state = SHIFT_LEFT;
+                shift<=1;
             end
         end
 
         SUB: begin
             busy <= 1;
             next_state = SHIFT_LEFT;
+            shift<=1;
         end
 
         SHIFT_LEFT: begin
