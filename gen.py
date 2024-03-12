@@ -40,10 +40,7 @@ with open('input.txt', 'w') as file:
         file.write(
             f'A = 10\'b{A};\nB = 10\'b{B};\nrst = 1; start = 0;\n#10 rst = 0; start = 1;#10 start=0; #380;\n\n')
 
-with open('output.txt', 'w') as file:
-    for A, B, Q in data:
-        file.write(f'# Q={Q}\n')
 
-with open('output2.txt', 'w') as file:
+with open('output.txt', 'w') as file:
     for A, B, Q in data:
         file.write(f'A = {A} , B= {B} , Q = {Q} \n')
