@@ -13,24 +13,23 @@ module testbench_top;
 
    initial
    begin
-    //   B = 10'b0;
+      // Devide by zero :
+      A = 10'b1101010000;
+      B = 10'b0;
+      rst = 1; start = 0; 
+     #10 rst = 0; start = 1;#10 start=0; #380;
+      // Main Tests: 
       A = 10'b1101010000;
       B = 10'b0000011000;
       rst = 1; start = 0; 
-      #10 rst = 0; start = 1;#10 start=0; #380;
-      start=0;# 300;
-
+     #10 rst = 0; start = 1;#10 start=0; #380;
+     
       A = 10'b0000100000;
       B = 10'b0000010000;
       rst = 1; start = 0; 
       #10 rst = 0; start = 1;#10 start=0; #380;
-      #500;
 
-      A = 10'b1101010000;
-      B = 10'b0;
-      rst = 1; start = 0; 
-      #10 rst = 0; start = 1;#10 start=0; #380;
-      start=0;# 300;
+
 
       $stop;
    end

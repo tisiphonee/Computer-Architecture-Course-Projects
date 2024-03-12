@@ -38,7 +38,7 @@ print(i)
 with open('input.txt', 'w') as file:
     for A, B, Q in data:
         file.write(
-            f'A = 10\'b{A};\nB = 10\'b{B};\nrst = 1; start = 0;\n\n#10 rst = 0; start = 1; #178; $display("Q=%b", Q);\n\n')
+            f'A = 10\'b{A};\nB = 10\'b{B};\nrst = 1; start = 0;\n#10 rst = 0; start = 1;#10 start=0; #380;\n\n')
 
 with open('output.txt', 'w') as file:
     for A, B, Q in data:
