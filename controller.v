@@ -78,7 +78,7 @@ always @(posedge clk) begin
             busy <= 1;
             if (CO_CNT || ovf) begin
                 if (ovf) begin
-                    next_state = IDLE;
+                    // next_state = IDLE;
                 end else begin
                     next_state = DONE;
                     valid <= 1;
