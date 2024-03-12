@@ -19,7 +19,7 @@ module testbench_top;
       rst = 1; start = 0; 
      #10 rst = 0; start = 1;#10 start=0; #380;
       // Main Tests: 
-              A = 10'b0001100100;
+        A = 10'b0001100100;
         B = 10'b0000010000;
         rst = 1; start = 0;
         #10 rst = 0; start = 1;#10 start=0; #380;
