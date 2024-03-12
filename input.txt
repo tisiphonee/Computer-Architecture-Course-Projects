@@ -1,599 +1,599 @@
-A = 10'b0001100010;
-B = 10'b0001010111;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000100010;
-B = 10'b0001101111;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001001100;
-B = 10'b0000000101;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000001101;
-B = 10'b0000111001;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001001110;
-B = 10'b0001010001;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000100001;
-B = 10'b0000100111;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001101010;
-B = 10'b0001100111;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001111011;
-B = 10'b0001101001;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000111110;
-B = 10'b0001101011;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000001010;
-B = 10'b0001000101;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000000111;
-B = 10'b0001000110;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001011100;
-B = 10'b0000111100;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001011110;
-B = 10'b0000100110;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000111001;
-B = 10'b0001010001;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001001110;
-B = 10'b0001011111;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001111100;
-B = 10'b0000000100;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001100100;
-B = 10'b0001110011;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001101000;
-B = 10'b0001101010;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000010000;
-B = 10'b0001111001;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000011111;
-B = 10'b0000101110;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001100011;
-B = 10'b0001111001;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000000000;
-B = 10'b0001011011;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000111110;
-B = 10'b0000001111;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001001000;
-B = 10'b0001001101;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000010111;
-B = 10'b0001100011;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001010110;
-B = 10'b0001110101;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000101000;
-B = 10'b0000011010;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001101001;
-B = 10'b0001001100;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000010101;
-B = 10'b0001010101;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000100000;
-B = 10'b0001101101;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001010100;
-B = 10'b0001110100;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001101111;
-B = 10'b0001000111;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000101100;
-B = 10'b0000100101;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000000111;
-B = 10'b0001010011;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000101010;
-B = 10'b0001010010;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000001111;
-B = 10'b0000110011;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000000010;
-B = 10'b0001110111;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001111100;
-B = 10'b0000000111;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001000010;
-B = 10'b0001100010;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001111001;
-B = 10'b0000110001;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001000101;
-B = 10'b0001110110;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001110100;
-B = 10'b0001011101;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001001000;
-B = 10'b0000100110;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001000011;
-B = 10'b0001011101;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000000101;
-B = 10'b0001111100;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001101000;
-B = 10'b0000010011;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000100101;
-B = 10'b0001000100;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000100101;
-B = 10'b0000100100;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001101101;
-B = 10'b0001010110;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000110100;
-B = 10'b0000001011;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001110100;
-B = 10'b0000101110;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000001110;
-B = 10'b0000001101;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000000100;
-B = 10'b0000010000;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001000010;
-B = 10'b0000001001;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001011011;
-B = 10'b0001011110;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000111010;
-B = 10'b0000110000;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
 A = 10'b0000011110;
-B = 10'b0000111111;
+B = 10'b0000000010;
 rst = 1; start = 0;
 
 #10 rst = 0; start = 1; #178; $display("Q=%b", Q);
 
-A = 10'b0000111111;
-B = 10'b0000011100;
+A = 10'b1111111011;
+B = 10'b0000000001;
 rst = 1; start = 0;
 
 #10 rst = 0; start = 1; #178; $display("Q=%b", Q);
 
-A = 10'b0000010101;
-B = 10'b0001111110;
+A = 10'b1111011101;
+B = 10'b0000000001;
 rst = 1; start = 0;
 
 #10 rst = 0; start = 1; #178; $display("Q=%b", Q);
 
-A = 10'b0001010000;
-B = 10'b0000101001;
+A = 10'b1011000100;
+B = 10'b0000000001;
 rst = 1; start = 0;
 
 #10 rst = 0; start = 1; #178; $display("Q=%b", Q);
 
-A = 10'b0000101110;
-B = 10'b0000111000;
+A = 10'b0011010010;
+B = 10'b0000000001;
 rst = 1; start = 0;
 
 #10 rst = 0; start = 1; #178; $display("Q=%b", Q);
 
-A = 10'b0000110100;
-B = 10'b0000100100;
+A = 10'b1010011010;
+B = 10'b0000000010;
 rst = 1; start = 0;
 
 #10 rst = 0; start = 1; #178; $display("Q=%b", Q);
 
-A = 10'b0001010010;
-B = 10'b0001100000;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001111001;
-B = 10'b0001010001;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000111100;
-B = 10'b0000001100;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000000101;
-B = 10'b0000111000;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000011100;
-B = 10'b0001111111;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000011011;
-B = 10'b0000101011;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001101110;
+A = 10'b1110111000;
 B = 10'b0000000011;
 rst = 1; start = 0;
 
 #10 rst = 0; start = 1; #178; $display("Q=%b", Q);
 
-A = 10'b0001111100;
-B = 10'b0001101010;
+A = 10'b0111101011;
+B = 10'b0000000001;
 rst = 1; start = 0;
 
 #10 rst = 0; start = 1; #178; $display("Q=%b", Q);
 
-A = 10'b0001100101;
-B = 10'b0001100101;
+A = 10'b1001101111;
+B = 10'b0000000011;
 rst = 1; start = 0;
 
 #10 rst = 0; start = 1; #178; $display("Q=%b", Q);
 
-A = 10'b0001011111;
-B = 10'b0001000001;
+A = 10'b1000000000;
+B = 10'b0000000010;
 rst = 1; start = 0;
 
 #10 rst = 0; start = 1; #178; $display("Q=%b", Q);
 
-A = 10'b0000000001;
-B = 10'b0000000111;
+A = 10'b1101000111;
+B = 10'b0000000001;
 rst = 1; start = 0;
 
 #10 rst = 0; start = 1; #178; $display("Q=%b", Q);
 
-A = 10'b0000001100;
-B = 10'b0001100010;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000011010;
-B = 10'b0001011011;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000001110;
-B = 10'b0000111000;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000000010;
-B = 10'b0000100001;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000011001;
-B = 10'b0001011111;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001110100;
-B = 10'b0001100011;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000011101;
-B = 10'b0000000101;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000010001;
-B = 10'b0001011010;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001001011;
-B = 10'b0000111011;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001110011;
-B = 10'b0000010110;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000111111;
-B = 10'b0000100100;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000000110;
-B = 10'b0000001000;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001100110;
-B = 10'b0000100000;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000010110;
-B = 10'b0000000111;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001011011;
-B = 10'b0000001111;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001110011;
-B = 10'b0001101100;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000001011;
-B = 10'b0001011011;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001110010;
-B = 10'b0000100000;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0000011101;
-B = 10'b0000000111;
-rst = 1; start = 0;
-
-#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
-
-A = 10'b0001100001;
-B = 10'b0000110100;
+A = 10'b1000101010;
+B = 10'b0000000010;
 rst = 1; start = 0;
 
 #10 rst = 0; start = 1; #178; $display("Q=%b", Q);
 
 A = 10'b0000110100;
-B = 10'b0001001001;
+B = 10'b0000000010;
 rst = 1; start = 0;
 
 #10 rst = 0; start = 1; #178; $display("Q=%b", Q);
 
-A = 10'b0001001001;
-B = 10'b0000100000;
+A = 10'b0111000010;
+B = 10'b0000000010;
 rst = 1; start = 0;
 
 #10 rst = 0; start = 1; #178; $display("Q=%b", Q);
 
-A = 10'b0001010100;
-B = 10'b0000010000;
+A = 10'b1110011110;
+B = 10'b0000000001;
 rst = 1; start = 0;
 
 #10 rst = 0; start = 1; #178; $display("Q=%b", Q);
 
-A = 10'b0001010101;
-B = 10'b0001000011;
+A = 10'b1010010110;
+B = 10'b0000000011;
 rst = 1; start = 0;
 
 #10 rst = 0; start = 1; #178; $display("Q=%b", Q);
 
-A = 10'b0000000011;
-B = 10'b0000000110;
+A = 10'b1010101001;
+B = 10'b0000000010;
 rst = 1; start = 0;
 
 #10 rst = 0; start = 1; #178; $display("Q=%b", Q);
 
-A = 10'b0001000101;
-B = 10'b0001000010;
+A = 10'b1000000110;
+B = 10'b0000000001;
 rst = 1; start = 0;
 
 #10 rst = 0; start = 1; #178; $display("Q=%b", Q);
 
-A = 10'b0000111001;
-B = 10'b0000111100;
+A = 10'b1001111010;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1011011100;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1111000000;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0010111110;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0100010010;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0000100111;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1101100111;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1001111000;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1100100001;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1010111101;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1010101111;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0011000010;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1110111110;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0000110111;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1011101011;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1100101010;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1111111010;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1110111000;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1100001101;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1010100001;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0100000110;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0111000001;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1001011111;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1000110011;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0000011010;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0000011001;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0111000001;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1001101001;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0111001100;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1000000111;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0101100010;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1101001001;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1000001100;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1001010010;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1001010100;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0001100011;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0100001001;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1111011101;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0111111100;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0001110110;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0101000010;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0111110111;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1100010001;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0010010101;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1100100100;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1110100101;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1100010001;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0001011100;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1101010011;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0111101101;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1011001100;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1111111011;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1001100100;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0101000101;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1001110100;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1101000001;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0011010110;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0101001000;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0010010000;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1101011110;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0001001010;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1010000110;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1000100010;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1111110000;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0100100110;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0100000001;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0111001010;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1001011110;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1100101011;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1101001010;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1000001101;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0111011010;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1111101011;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1100110011;
+B = 10'b0000000011;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0100011000;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1001100111;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1001100001;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0111101000;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1110001111;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0000011111;
+B = 10'b0000000010;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b0101010000;
+B = 10'b0000000001;
+rst = 1; start = 0;
+
+#10 rst = 0; start = 1; #178; $display("Q=%b", Q);
+
+A = 10'b1110100100;
+B = 10'b0000000001;
 rst = 1; start = 0;
 
 #10 rst = 0; start = 1; #178; $display("Q=%b", Q);
