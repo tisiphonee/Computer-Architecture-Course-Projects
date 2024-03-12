@@ -6,7 +6,7 @@ def gen_rnd():
 
 
 def gen_rnd_2():
-    return format(random.randint(1, 2**2 - 1), '010b')
+    return format(random.randint(1, 2**2 - 1)*8, '010b')
 
 
 def div(A, B):
@@ -21,9 +21,9 @@ def div(A, B):
 data = []
 i = 0
 for _ in range(100):
-    A = gen_rnd()
-    B = gen_rnd_2()
-    Q = div(A, B)
+    A = gen_rnd()[:10]
+    B = gen_rnd_2()[:10]
+    Q = div(A, B)[:10]
     float_A = int(A, 2) / (2 ** 4)
     float_B = int(B, 2) / (2 ** 4)
     Q_res = int(Q, 2) / (2 ** 4)
