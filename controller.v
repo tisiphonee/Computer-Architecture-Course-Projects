@@ -58,6 +58,10 @@ always @(posedge clk) begin
         end
 
         DIVIDE: begin
+            if (ovf) begin
+                next_state = IDLE;
+            end
+            else
             if(CO_CNT) begin
                 count_enable<=0;
                 valid <= 1;
@@ -83,11 +87,7 @@ always @(posedge clk) begin
 
         SHIFT_LEFT: begin
             busy <= 1;
-            if (ovf) begin
-                next_state = IDLE;
-            end else begin
-                next_state = DIVIDE;
-            end
+            next_state = DIVIDE;
         end
 
         DONE: begin

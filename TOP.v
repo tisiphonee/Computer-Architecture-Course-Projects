@@ -7,10 +7,11 @@ input [9:0] B,
 output [9:0] Q_next,
 output busy,
 output valid,
-output ovf
+output ovf,
+output dvz
 );
 
-wire rst, loading_done, ld_a, ld_b, gT, dvz, CO_CNT,shift,count_enable; 
+wire rst, loading_done, ld_a, ld_b, gT, CO_CNT,shift,count_enable; 
 
 fixed_point_division2 CUT1(clk, rst, loading_done,start,ld_a,ld_b,shift,count_enable,A,B,Q_next,ovf,gT, dvz,CO_CNT);
 
