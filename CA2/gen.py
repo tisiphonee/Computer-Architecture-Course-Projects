@@ -3,7 +3,7 @@ import random
 
 def gen(n):
     for i in range(1, n+1):
-        random_numbers = [random.randint(2**31, 2**32 - 1) for _ in range(10)]
+        random_numbers = [random.randint(2**31, 2**32 - 1) for _ in range(20)]
         # print(f'{random_numbers[0]:32b}')
         with open(f'test_cases/arr{i}.mem', 'w') as mem_file, open(f'test_cases/array{i}.txt', 'w') as array_file:
             address = 0x3e8
