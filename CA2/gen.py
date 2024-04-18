@@ -20,4 +20,4 @@ def gen(n):
             array_file.write(f"Max: {max(random_numbers)}")
 
 
-gen(1)
+gen(3)
