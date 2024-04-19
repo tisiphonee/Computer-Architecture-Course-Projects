@@ -1,0 +1,7 @@
+*.cr.mti
+*.mpf
+/work
+vsim.wlf
+comment.v
+temp.v
+/temp
