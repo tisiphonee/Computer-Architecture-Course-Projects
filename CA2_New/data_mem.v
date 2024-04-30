@@ -10,11 +10,11 @@ module DataMemory (input [31:0] A, WD, input WE , clk , output reg[31:0] RD);
 
     always @(posedge clk) begin
         if (WE)
-            {dataMem[adr + 3], dataMem[adr + 2], dataMem[adr + 1], dataMem[adr]} <= WD;
+            {dataMem[adr ], dataMem[adr +1], dataMem[adr + 2], dataMem[adr +3]} <= WD;
     end
 
     always @(A or adr) begin
-           RD = {dataMem[adr + 3], dataMem[adr + 2], dataMem[adr + 1], dataMem[adr]};
+           RD = {dataMem[adr ], dataMem[adr +1], dataMem[adr + 2], dataMem[adr+3]};
     end
 endmodule
 
