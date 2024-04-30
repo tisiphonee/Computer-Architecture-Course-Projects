@@ -5,9 +5,9 @@ module InstMemory (input[31:0] pc, output[31:0] inst);
     wire [31:0] adr;
     assign adr = {pc[31:2], 2'b00}; 
 
-    initial $readmemh("inst2.mem", instMem);
+    initial $readmemh("dataR.mem", instMem);
 
-    assign inst = {instMem[adr + 3], instMem[adr + 2], instMem[adr + 1], instMem[adr]};
+    assign inst = {instMem[adr], instMem[adr + 1], instMem[adr + 2], instMem[adr + 3]};
 
 endmodule
 

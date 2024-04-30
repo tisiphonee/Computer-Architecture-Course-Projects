@@ -7,7 +7,7 @@ module PC (
 
     always @(posedge clock) begin
         if (reset)
-            output_data <= 32'b00000000000000000000000000000000;
+            output_data <= 32'b0;
         else
             output_data <= input_data;
     end
