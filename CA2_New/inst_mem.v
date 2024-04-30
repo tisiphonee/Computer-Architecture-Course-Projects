@@ -8,7 +8,6 @@ module InstMemory (input[31:0] pc, output[31:0] inst);
     initial $readmemh("inst2.mem", instMem);
 
     assign inst = {instMem[adr + 3], instMem[adr + 2], instMem[adr + 1], instMem[adr]};
-    //assign inst = {instMem[pc]};
 
 endmodule
 

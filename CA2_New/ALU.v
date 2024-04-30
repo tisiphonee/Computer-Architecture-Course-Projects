@@ -1,20 +1,25 @@
-module ALU (input signed [31:0]  SrcA, SrcB, input[2:0]control, output zero , sign , output reg  signed [31:0] res);
+module ALU (
+    input signed [31:0] operand_A, operand_B,
+    input [2:0] operation,
+    output is_zero,
+    output is_negative,
+    output reg signed [31:0] result
+);
 
-    assign zero = ~|res;
-    assign sign = res[31];
+    assign is_zero = ~|result;
+    assign is_negative = result[31];
 
-    always @(SrcA,SrcB, control) begin
-        case (control)
-            3'b000:  res = SrcA & SrcB;
-            3'b001:  res = SrcA | SrcB;
-            3'b010:  res = SrcA + SrcB;
-            3'b110:  res = SrcA - SrcB;
-	        3'b011:  res = SrcA ^ SrcB;
-            3'b100:  res = {1'b0 ,SrcA} < {1'b0,SrcB} ? 'd1 : 'd0;
-            3'b111:  res = SrcA < SrcB ? 'd1 : 'd0;
-            default: res = {32{1'b0}};
+    always @ (operand_A, operand_B, operation) begin
+        case (operation)
+            3'b000:  result = operand_A & operand_B;
+            3'b001:  result = operand_A | operand_B;
+            3'b010:  result = operand_A + operand_B;
+            3'b110:  result = operand_A - operand_B;
+            3'b011:  result = operand_A ^ operand_B;
+            3'b100:  result = ({{1'b0}, operand_A} < {{1'b0}, operand_B}) ? 32'b1 : 32'b0;
+            3'b111:  result = (operand_A < operand_B) ? 32'b1 : 32'b0;
+            default: result = 32'b0;
         endcase
     end
+
 endmodule
-
-

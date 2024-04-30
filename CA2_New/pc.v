@@ -1,12 +1,15 @@
+module PC (
+    input [31:0] input_data,
+    input clock,
+    input reset,
+    output reg [31:0] output_data
+);
 
-module PC(input [31:0] in, input clk , rst , output reg [31:0]out);
-	
-    always @(posedge clk) begin
-	if(rst)
-		out= 32'b000000000000000000000000000000;
-	else
-            out = in;
+    always @(posedge clock) begin
+        if (reset)
+            output_data <= 32'b00000000000000000000000000000000;
+        else
+            output_data <= input_data;
     end
-	
-endmodule
 
+endmodule
