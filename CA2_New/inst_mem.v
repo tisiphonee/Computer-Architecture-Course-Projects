@@ -1,13 +1,15 @@
-module InstMemory (input[31:0] pc, output[31:0] inst);
+module InstructionMemory (
+    input [31:0] program_counter,
+    output [31:0] instruction
+);
 
-    reg [7:0] instMem [0:$pow(2, 16)-1]; 
+    reg [7:0] instruction_memory [0:65535]; // 2^16-1
 
-    wire [31:0] adr;
-    assign adr = {pc[31:2], 2'b00}; 
+    wire [31:0] address;
+    assign address = {program_counter[31:2], 2'b00};
 
-    initial $readmemh("dataR.mem", instMem);
+    initial $readmemh("dataR.mem", instruction_memory);
 
-    assign inst = {instMem[adr], instMem[adr + 1], instMem[adr + 2], instMem[adr + 3]};
+    assign instruction = {instruction_memory[address], instruction_memory[address + 1], instruction_memory[address + 2], instruction_memory[address + 3]};
 
 endmodule
-
