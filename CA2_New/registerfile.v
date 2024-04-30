@@ -1,18 +1,26 @@
+module RegisterFile (
+    input [4:0] read_address_1,
+    input [4:0] read_address_2,
+    input [4:0] write_address,
+    input [31:0] write_data,
+    input write_enable,
+    input clock,
+    output reg [31:0] read_data_1,
+    output reg [31:0] read_data_2
+);
 
-module RegisterFile (input [4:0] A1 , A2,A3,input[31:0] WD3, input WE3 , clk , output[31:0] RD1 , RD2);
+
+    reg [31:0] register_file [0:31];
+
+    assign read_data_1 = register_file[read_address_1];
+    assign read_data_2 = register_file[read_address_2];
+    assign register_file[0] = 32'b0;
 
 
-    reg [31:0] regFile [0:31];
-
-    assign RD1 = regFile[A1];
-    assign RD2 = regFile[A2];
-    assign regFile[0] = 32'b0000000000000000000000000000000;
-
-
-
-    always @(posedge clk ) begin
-        if (WE3)
-            if (A3 != {5{1'b0}}) 
-                regFile[A3] <= WD3;
+    always @(posedge clock) begin
+        if (write_enable) begin
+            if (write_address != 5'b00000) // ensuring we are not writing to register 0
+                register_file[write_address] <= write_data;
+        end
     end
 endmodule
