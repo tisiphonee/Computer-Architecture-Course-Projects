@@ -14,8 +14,8 @@ I-Type,ORI,00,00,0,001,1,000,1
 S-Type,SW,00,XX,1,010,1,001,0
 J-Type,JALR,10,10,0,010,1,000,1
 J-Type,JAL,01,10,0,010,X,011,1
-B-Type,BEQ,(zero == 1) ? 1 : 0,00,0,XXX,0,010,0
-B-Type,BNE,(zero == 1) ? 0 : 1,00,0,XXX,0,010,0
-B-Type,BLT,(sign == 1) ? 1 : 0,00,0,XXX,0,001,0
-B-Type,BGE,(sign == 0 || zero == 1) ? 1 : 0,00,0,XXX,0,000,0
+B-Type,BEQ,(zero == 1) ? 1 : 2'b00,00,0,XXX,0,010,0
+B-Type,BNE,(zero == 1) ? 0 : 2'b01,00,0,XXX,0,010,0
+B-Type,BLT,(sign == 1) ? 1 : 2'b00,00,0,XXX,0,001,0
+B-Type,BGE,(sign == 0 || zero == 1) ? 1 : 2'b00,00,0,XXX,0,000,0
 U-Type,LUI,00,11,0,XXX,X,100,1
