@@ -53,12 +53,13 @@ module Controller (
                     SLT: ALUControl = 3'b111;
                     OR: ALUControl = 3'b001;
                     AND: ALUControl = 3'b000;
-                    default: ALUControl = 3'b0;
+                    default: ALUControl = 3'bXXX;
                 endcase
             end
             LOAD: begin 
                 RegWrite = 1; ImmSrc = 3'b000; ALUSrc = 1; MemWrite = 0; ResultSrc = 2'b01; PCSrc = 2'b00;
                 if (func3 == LW) ALUControl = 3'b010; 
+                else ALUControl = 3'bXXX;
             end
             IMMEDIATE: begin
                 RegWrite = 1; ImmSrc = 3'b000; ALUSrc = 1; MemWrite = 0; ResultSrc = 2'b00; PCSrc = 2'b00;
@@ -68,20 +69,22 @@ module Controller (
                     SLTI: ALUControl = 3'b111;
                     XORI: ALUControl = 3'b011;
                     ORI: ALUControl = 3'b001;
-                    default: ALUControl = 3'b0;
+                    default: ALUControl = 3'bXXX;
                 endcase
             end
             JALR: begin
                 RegWrite = 1; ImmSrc = 3'b000; ALUSrc = 1; MemWrite = 0; ResultSrc = 2'b10; PCSrc = 2'b10;
                 if (func3 == JALR_FUNC3) ALUControl = 3'b010; 
+                else ALUControl = 3'bXXX;
             end
             STORE: begin
                 RegWrite = 0; ImmSrc = 3'b001; ALUSrc = 1; MemWrite = 1; ResultSrc = 2'b00; PCSrc = 2'b00;
                 if (func3 == SW) ALUControl = 3'b010; 
+                else ALUControl = 3'bXXX;
             end
             JAL: begin
-                RegWrite = 1; ImmSrc = 3'b011; ALUSrc = 0; MemWrite = 0; ResultSrc = 2'bXX; PCSrc = 2'b01;
-                ALUControl = 3'bXXX; 
+                RegWrite = 1; ImmSrc = 3'b011; ALUSrc = 0; MemWrite = 0; ResultSrc = 2'b10; PCSrc = 2'b01;
+                ALUControl = 3'b010; 
             end
             BRANCH: begin
                 RegWrite = 0; ImmSrc = 3'b010; ALUSrc = 0; MemWrite = 0; ResultSrc = 2'b00;
@@ -105,12 +108,14 @@ module Controller (
                 endcase
             end
             LUI: begin
-                RegWrite = 1; ImmSrc = 3'b100; ALUSrc = 1; MemWrite = 0; ResultSrc = 2'b11; PCSrc = 2'b00;
-                ALUControl = 3'bXXX; 
+                RegWrite = 1; ALUSrc = 1; MemWrite = 0; ResultSrc = 2'b11; PCSrc = 2'b00;
+                ALUControl = 3'bXXX;
+                // ImmSrc is already set correctly in this block
             end
             default: begin
-                RegWrite = 0; ImmSrc = 3'b000; ALUSrc = 0; MemWrite = 0; ResultSrc = 2'b00; PCSrc = 2'b00;
+                RegWrite = 0; ALUSrc = 0; MemWrite = 0; ResultSrc = 2'b00; PCSrc = 2'b00;
                 ALUControl = 3'bXXX;
+                ImmSrc = 3'bXXX;
             end
         endcase
     end
