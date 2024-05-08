@@ -3,7 +3,7 @@
 module riscv_testbench ;
     reg clk = 1'b0, rst = 1'b0;
 
-    RISC_V risc(clk, rst);
+    RISC_V riscv(clk, rst);
 
     always #1 clk = ~clk;
     initial begin
