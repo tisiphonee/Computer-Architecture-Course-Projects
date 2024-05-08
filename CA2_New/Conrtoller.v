@@ -110,7 +110,6 @@ module Controller (
             LUI: begin
                 RegWrite = 1; ALUSrc = 1; MemWrite = 0; ResultSrc = 2'b11; PCSrc = 2'b00;
                 ALUControl = 3'bXXX;
-                // ImmSrc is already set correctly in this block
             end
             default: begin
                 RegWrite = 0; ALUSrc = 0; MemWrite = 0; ResultSrc = 2'b00; PCSrc = 2'b00;
