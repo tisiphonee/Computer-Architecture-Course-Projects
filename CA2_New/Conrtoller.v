@@ -86,26 +86,33 @@ module Controller (
                 RegWrite = 1; ImmSrc = 3'b011; ALUSrc = 1'bX; MemWrite = 0; ResultSrc = 2'b10; PCSrc = 2'b01;
                 ALUControl = 3'b010; 
             end
+
             BRANCH: begin
-                RegWrite = 0; ImmSrc = 3'b010; ALUSrc = 0; MemWrite = 0; ResultSrc = 2'b00;ALUControl = 3'bXXX;
+                RegWrite = 0; ImmSrc = 3'b010; ALUSrc = 0; MemWrite = 0; ResultSrc = 2'b00;
                 case(func3)
                     BEQ: begin
+                        ALUControl = 3'b000;
                         PCSrc = (zero == 1) ? 1 : 2'b00;
                     end
                     BNE: begin
+                        ALUControl = 3'b000;
                         PCSrc = (zero == 1) ? 0 : 2'b01;
                     end
                     BLT: begin
+                        ALUControl = 3'b111;
                         PCSrc = (sign == 1) ? 1 : 2'b00;
                     end
                     BGE: begin
+                        ALUControl = 3'b111;
                         PCSrc = (sign == 0 || zero == 1) ? 1 : 2'b00;
                     end
                     default: begin
+                        ALUControl = 3'b0;
                         PCSrc = 2'b00;
                     end
                 endcase
             end
+
             LUI: begin
                 RegWrite = 1; ALUSrc = 1'bX; MemWrite = 0; ResultSrc = 2'b11; PCSrc = 2'b00;
                 ALUControl = 3'bXXX;
