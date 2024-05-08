@@ -87,8 +87,7 @@ module Controller (
                 ALUControl = 3'b010; 
             end
             BRANCH: begin
-                RegWrite = 0; ImmSrc = 3'b010; ALUSrc = 0; MemWrite = 0; ResultSrc = 2'b00;
-                ALUControl = 3'bXXX;
+                RegWrite = 0; ImmSrc = 3'b010; ALUSrc = 0; MemWrite = 0; ResultSrc = 2'b00;ALUControl = 3'bXXX;
                 case(func3)
                     BEQ: begin
                         PCSrc = (zero == 1) ? 1 : 2'b00;
