@@ -91,11 +91,11 @@ module Controller (
                 RegWrite = 0; ImmSrc = 3'b010; ALUSrc = 0; MemWrite = 0; ResultSrc = 2'b00;
                 case(func3)
                     BEQ: begin
-                        ALUControl = 3'b000;
+                        ALUControl = 3'b011;
                         PCSrc = (zero == 1) ? 1 : 2'b00;
                     end
                     BNE: begin
-                        ALUControl = 3'b000;
+                        ALUControl = 3'b011;
                         PCSrc = (zero == 1) ? 0 : 2'b01;
                     end
                     BLT: begin
