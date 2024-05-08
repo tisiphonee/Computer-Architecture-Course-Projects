@@ -1,6 +1,6 @@
 `timescale 1ns/1ns
 
-module TB ();
+module riscv_testbench ;
     reg clk = 1'b0, rst = 1'b0;
 
     RISC_V risc(clk, rst);

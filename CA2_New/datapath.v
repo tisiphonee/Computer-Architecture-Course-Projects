@@ -40,7 +40,7 @@ assign SourceA = RegData1;
 
 
 PC pc(.input_data(PCIn), .clock(clk), .reset(rst), .output_data(PCOut));
-InstMemory instmem(.pc(PCOut), .inst(Inst));
+InstructionMemory instmem(.pc(PCOut), .instruction(Inst));
 RegisterFile regfile(
     .read_address_1(ReadAddr1), .read_address_2(ReadAddr2), .write_address(WriteAddr),
     .write_data(Result), .write_enable(RegWrite), .clock(clk),
