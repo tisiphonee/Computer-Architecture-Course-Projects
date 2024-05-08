@@ -10,7 +10,7 @@ module RISC_V (
     wire [2:0] ALUControl, func3;
     wire [6:0] opcode, func7;
     
-    datapath dp (
+    datapath DP (
         .rst(rst),
         .PCSrc(PCSrc),
         .ResultSrc(ResultSrc),
@@ -27,7 +27,7 @@ module RISC_V (
         .func7(func7)
     );
 
-    Controller cu (
+    Controller CU (
         .zero(zero),
         .sign(sign),
         .opcode(opcode),

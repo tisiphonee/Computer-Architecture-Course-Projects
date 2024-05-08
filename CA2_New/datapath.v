@@ -40,13 +40,13 @@ assign SourceA = RegData1;
 
 
 PC pc(.input_data(PCIn), .clock(clk), .reset(rst), .output_data(PCOut));
-InstructionMemory instmem(.pc(PCOut), .instruction(Inst));
-RegisterFile regfile(
+InstructionMemory instruction_memory(.pc(PCOut), .instruction(Inst));
+RegisterFile register_file(
     .read_address_1(ReadAddr1), .read_address_2(ReadAddr2), .write_address(WriteAddr),
     .write_data(Result), .write_enable(RegWrite), .clock(clk),
     .read_data_1(RegData1), .read_data_2(RegData2)
 );
-Mux2To1 mux21(
+Mux2To1 mux2to1(
     .a0(RegData2), .a1(immext), .sel(ALUSrc),
     .out(SourceB)
 );
@@ -54,26 +54,26 @@ ALU alu(
     .operand_A(SourceA), .operand_B(SourceB), .operation(ALUControl),
     .is_zero(zero), .is_negative(sign), .result(ALUResult)
 );
-DataMemory datamem(
+DataMemory datamemory(
     .address(ALUResult), .writeData(RegData2),
     .writeEnable(MemWrite), .clk(clk),
     .readData(ReadData)
 );
-Mux4To1 mux41(
+Mux4To1 mux4to1(
     .a0(ALUResult), .a1(ReadData), .a2(PCPlus4), .a3(immext),
     .sel(ResultSrc), .out(Result)
 );
-Adder pctarget(.input_a(PCOut), .input_b(immext), .sum(PCTarget));
-Adder pc4(
+Adder pc_target(.input_a(PCOut), .input_b(immext), .sum(PCTarget));
+Adder pc_add_4(
     .input_a(PCOut),
     .input_b(32'd4),
     .sum(PCPlus4)
 );
-Mux3To1 pcmux31(
+Mux3To1 pc_mux_3to1(
     .a0(PCPlus4), .a1(PCTarget), .a2(ALUResult),
     .sel(PCSrc), .out(PCIn)
 );
-ImmExt immextend(
+ImmExt imm_extend(
     .in(imm), .ImmSrc(ImmSrc), .out(immext)
 );
 
