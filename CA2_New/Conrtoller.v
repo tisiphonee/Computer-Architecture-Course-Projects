@@ -45,7 +45,7 @@ module Controller (
     always @ (opcode, func3, func7) begin
         case(opcode)
             R_TYPE: begin 
-                RegWrite = 1; ImmSrc = 3'b000; ALUSrc = 0; MemWrite = 0; ResultSrc = 2'b00; PCSrc = 2'b00;
+                RegWrite = 1; ImmSrc = 3'bXXX; ALUSrc = 0; MemWrite = 0; ResultSrc = 2'b00; PCSrc = 2'b00;
                 case(func3)
                     ADD: ALUControl = 3'b010;
                     SUB: ALUControl = 3'b110;
@@ -78,12 +78,12 @@ module Controller (
                 else ALUControl = 3'bXXX;
             end
             STORE: begin
-                RegWrite = 0; ImmSrc = 3'b001; ALUSrc = 1; MemWrite = 1; ResultSrc = 2'b00; PCSrc = 2'b00;
+                RegWrite = 0; ImmSrc = 3'b001; ALUSrc = 1; MemWrite = 1; ResultSrc = 2'bXX; PCSrc = 2'b00;
                 if (func3 == SW) ALUControl = 3'b010; 
                 else ALUControl = 3'bXXX;
             end
             JAL: begin
-                RegWrite = 1; ImmSrc = 3'b011; ALUSrc = 0; MemWrite = 0; ResultSrc = 2'b10; PCSrc = 2'b01;
+                RegWrite = 1; ImmSrc = 3'b011; ALUSrc = 1'bX; MemWrite = 0; ResultSrc = 2'b10; PCSrc = 2'b01;
                 ALUControl = 3'b010; 
             end
             BRANCH: begin
@@ -107,7 +107,7 @@ module Controller (
                 endcase
             end
             LUI: begin
-                RegWrite = 1; ALUSrc = 1; MemWrite = 0; ResultSrc = 2'b11; PCSrc = 2'b00;
+                RegWrite = 1; ALUSrc = 1'bX; MemWrite = 0; ResultSrc = 2'b11; PCSrc = 2'b00;
                 ALUControl = 3'bXXX;
             end
             default: begin
