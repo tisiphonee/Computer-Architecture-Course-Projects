@@ -3,21 +3,20 @@
 `define R_T   2'b10
 `define I_T   2'b11
 
-
 `define ADD  3'b000
 `define SUB  3'b001
 `define AND  3'b010
 `define OR   3'b011
 `define SLT  3'b101
-`define XOR  3'b100
-`define SLTU 3'b110
+`define SLTU  3'b100
+`define XOR 3'b110
 
 
 module ALU_Controller(func3, func7, ALUOp, ALUControl);
 
     input [2:0] func3;
     input [1:0] ALUOp;
-    input func7; //bit 30 instr
+    input func7;
 
     output reg [2:0] ALUControl;
     
