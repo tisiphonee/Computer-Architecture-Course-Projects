@@ -1,219 +1,72 @@
-`define R_T     7'b0110011
-`define I_T     7'b0010011
-`define S_T     7'b0100011
-`define B_T     7'b1100011
-`define U_T     7'b0110111
-`define J_T     7'b1101111
-`define LW_T    7'b0000011
-`define JALR_T  7'b1100111
+module RISCV_Controller(
+    input clk, rst,
+    input [6:0] opcode,
+    input zero_flag, negative_flag,
+    output reg [1:0] result_source, ALU_Source_A, ALU_Source_B, ALU_Operation,
+    output reg [2:0] immediate_source,
+    output reg address_source, register_write_enable, memory_write_enable, PC_update_enable, branch_control, instruction_register_write
+);
 
-`define IF       5'b00000
-`define ID       5'b00001
-`define EX_I     5'b00010
-`define MEM_I    5'b01100
-`define EX_R     5'b00011
-`define MEM_R    5'b01110
-`define EX_B     5'b00100
-`define EX_J     5'b00101
-`define MEM_J    5'b01000
-`define WB_J     5'b10000
-`define EX_JALR  5'b01001
-`define MEM_JALR 5'b00110
-`define EX_S     5'b00111
-`define MEM_S    5'b01101
-`define EX_LW    5'b01010
-`define MEM_LW   5'b01011
-`define WB_LW    5'b10001
-`define MEM_U    5'b01111
+    parameter IF = 5'b00000, ID = 5'b00001, EX = 5'b00010, MEM = 5'b00011, WB = 5'b00100;
 
-module MainController(clk, rst, op, zero, 
-                      PCUpdate, adrSrc, memWrite, branch,
-                      IRWrite, resultSrc, ALUOp, neg,
-                      ALUSrcA, ALUSrcB, immSrc, regWrite);
+    reg [4:0] current_state, next_state;
 
-    input [6:0] op;
-    input clk, rst, zero , neg;
-
-    output reg [1:0]  resultSrc, ALUSrcA, ALUSrcB, ALUOp;
-    output reg [2:0] immSrc;
-    output reg adrSrc, regWrite, memWrite, PCUpdate, branch, IRWrite;
-
-    reg [4:0] pstate;
-    reg [4:0] nstate = `IF;
-
-    always @(pstate or op) begin
-        case (pstate)
-            `IF  : nstate <= `ID;
-
-            `ID  : nstate <= (op == `I_T)    ? `EX_I     :
-                             (op == `R_T)    ? `EX_R     :
-                             (op == `B_T)    ? `EX_B     :
-                             (op == `J_T)    ? `EX_J     :
-                             (op == `U_T)    ? `MEM_U    :   
-                             (op == `S_T)    ? `EX_S     :
-                             (op == `JALR_T) ? `EX_JALR  :
-                             (op == `LW_T)   ? `EX_LW    : `IF; // undefined instruction
-
-            `EX_I : nstate <= `MEM_I;
-            `MEM_I: nstate <= `IF;
-
-            `EX_R : nstate <= `MEM_R;
-            `MEM_R: nstate <= `IF;
-
-            `EX_B : nstate <= `IF;
-
-            `EX_J : nstate <= `MEM_J;
-            `MEM_J: nstate <= `WB_J;
-            `WB_J : nstate <= `IF;
-
-            `EX_S : nstate <= `MEM_S;
-            `MEM_S: nstate <= `IF;
-            
-            `EX_JALR : nstate <= `MEM_JALR;
-            `MEM_JALR: nstate <= `MEM_I;
-
-            `EX_LW : nstate <= `MEM_LW;
-            `MEM_LW: nstate <= `WB_LW;
-            `WB_LW : nstate <= `IF;
-
-            `MEM_U: nstate <= `IF;
+    always @(current_state, opcode) begin
+        case (current_state)
+            IF: next_state = ID;
+            ID: next_state = (opcode == 7'b0010011) ? EX :
+                              (opcode == 7'b0110011) ? EX :
+                              (opcode == 7'b1100011) ? EX :
+                              (opcode == 7'b1101111) ? EX :
+                              (opcode == 7'b0110111) ? EX :
+                              (opcode == 7'b0100011) ? EX :
+                              (opcode == 7'b1100111) ? EX :
+                              (opcode == 7'b0000011) ? EX : IF;
+            EX: next_state = MEM;
+            MEM: next_state = WB;
+            WB: next_state = IF;
         endcase
     end
 
-
-    always @(pstate) begin
-
-        {resultSrc, memWrite, ALUOp, ALUSrcA, ALUSrcB, immSrc, 
-                regWrite, PCUpdate, branch, IRWrite} <= 14'b0;
-
-        case (pstate)
-            // instruction fetch
-            `IF : begin
-                IRWrite   <= 1'b1;
-                adrSrc    <= 1'b0;
-                ALUSrcA   <= 2'b00;
-                ALUSrcB   <= 2'b10;
-                ALUOp     <= 2'b00;
-                resultSrc <= 2'b10;
-                PCUpdate  <= 1'b1;
+    always @(current_state) begin
+        case (current_state)
+            IF: begin
+                instruction_register_write = 1'b1;
+                address_source = 1'b0;
+                ALU_Source_A = 2'b00;
+                ALU_Source_B = 2'b10;
+                ALU_Operation = 2'b00;
+                result_source = 2'b10;
+                PC_update_enable = 1'b1;
             end
-            // instruction decode
-            `ID: begin
-                ALUSrcA   <= 2'b01;
-                ALUSrcB   <= 2'b01;
-                ALUOp     <= 2'b00;
-                immSrc    <= 3'b010;
+            ID: begin
+                ALU_Source_A = 2'b01;
+                ALU_Source_B = 2'b01;
+                ALU_Operation = 2'b00;
+                immediate_source = 3'b010;
             end
-            // I-type
-            `EX_I: begin 
-                ALUSrcA   <= 2'b10;
-                ALUSrcB   <= 2'b01;
-                immSrc    <= 3'b000;
-                ALUOp     <= 2'b11;
+            EX: begin
+                ALU_Source_A = 2'b10;
+                ALU_Source_B = 2'b01;
+                immediate_source = 3'b000;
+                ALU_Operation = 2'b11;
             end
-
-            `MEM_I: begin
-                resultSrc <= 2'b00;
-                regWrite  <= 1'b1;
+            MEM: begin
+                result_source = 2'b00;
+                register_write_enable = 1'b1;
             end
-            // JALR-type (it's different from I-type so in another cycle it's handled)
-            `EX_JALR: begin 
-                ALUSrcA   <= 2'b10;
-                ALUSrcB   <= 2'b01;
-                immSrc    <= 3'b000;
-                ALUOp     <= 2'b00;
-            end
-
-            `MEM_JALR: begin
-                ALUSrcA   <= 2'b01;
-                ALUSrcB   <= 2'b10;
-                ALUOp     <= 2'b00;
-                resultSrc <= 2'b00;
-                PCUpdate  <= 1'b1;
-            end
-            // LW (like JALR)
-            `EX_LW: begin 
-                ALUSrcA   <= 2'b10;
-                ALUSrcB   <= 2'b01;
-                immSrc    <= 3'b000;
-                ALUOp     <= 2'b00;
-            end
-
-            `MEM_LW: begin
-                resultSrc <= 2'b00;
-                adrSrc    <= 1'b1;
-            end
-
-            `WB_LW: begin
-                resultSrc <= 2'b01;
-                regWrite  <= 1'b1;
-            end
-            // T-type
-            `EX_R: begin
-                ALUSrcA   <= 2'b10;
-                ALUSrcB   <= 2'b00;
-                ALUOp     <= 2'b10;
-            end
-
-            `MEM_R: begin
-                resultSrc <= 2'b00;
-                regWrite  <= 1'b1;
-            end
-            // B-type
-            `EX_B: begin
-                ALUSrcA   <= 2'b10;
-                ALUSrcB   <= 2'b00;
-                ALUOp     <= 2'b01;
-                resultSrc <= 2'b00;
-                branch    <= 1'b1;
-            end
-            // J-type
-            `EX_J: begin
-                ALUSrcA   <= 2'b01;
-                ALUSrcB   <= 2'b10;
-                ALUOp     <= 2'b00;
-            end
-        
-            `MEM_J: begin
-                resultSrc <= 2'b00;
-                regWrite  <= 1'b1;
-                ALUSrcA   <= 2'b01;
-                ALUSrcB   <= 2'b01;
-                immSrc    <= 3'b011;
-                ALUOp     <= 2'b00;
-            end
-
-            `WB_J: begin
-                resultSrc <= 2'b00;
-                PCUpdate  <= 1'b1;
-            end
-            // S-type
-            `EX_S: begin
-                ALUSrcA   <= 2'b10;
-                ALUSrcB   <= 2'b01;
-                ALUOp     <= 2'b00;
-                immSrc    <= 3'b001;
-            end
-        
-            `MEM_S: begin
-                resultSrc <= 2'b00;
-                adrSrc    <= 1'b1;
-                memWrite  <= 1'b1;
-            end
-            // U-type
-            `MEM_U: begin
-                resultSrc <= 2'b11;
-                immSrc    <= 3'b100;
-                regWrite  <= 1'b1;
+            WB: begin
+                result_source = 2'b01;
+                address_source = 1'b1;
             end
         endcase
     end
 
     always @(posedge clk or posedge rst) begin
         if (rst)
-            pstate <= `IF;
+            current_state <= IF;
         else
-            pstate <= nstate;
+            current_state <= next_state;
     end
 
 endmodule
