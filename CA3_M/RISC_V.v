@@ -22,14 +22,14 @@ module RISC_V(clk, rst);
     );
 
     RISC_V_Datapath DP(
-        .clk(clk), .rst(rst), .neg(neg),
-        .PCWrite(PCWrite), .adrSrc(adrSrc),
-        .memWrite(memWrite), .IRWrite(IRWrite), 
-        .resultSrc(resultSrc), .immSrc(immSrc), 
-        .ALUControl(ALUControl), .op(op),
-        .ALUSrcA(ALUSrcA), .func3(func3),
-        .ALUSrcB(ALUSrcB), .zero(zero),
-        .regWrite(regWrite), .func7(func7)
+        .clk(clk), .rst(rst), .NegFlag(neg),
+        .PCWrite(PCWrite), .AdrSlc(adrSrc),
+        .MemWrite(memWrite), .IRWrite(IRWrite), 
+        .ResultSlc(resultSrc), .ImmSlc(immSrc), 
+        .AluOpcode(ALUControl), .Opcode(op),
+        .InputA(ALUSrcA), .Func3(func3),
+        .InputB(ALUSrcB), .ZeroFlag(zero),
+        .RegWrite(regWrite), .Func7(func7)
     );
     
 endmodule

@@ -1,29 +1,24 @@
-`define BITS(x) $rtoi($ceil($clog2(x)))
+module RegisterFile(clk, RegWrite,
+                    ReadReg1, ReadReg2,
+                    WriteReg, WriteD,
+                    ReadData1, ReadData2);
 
-module RegisterFile(clk, regWrite,
-                    readRegister1, readRegister2,
-                    writeRegister, writeData,
-                    readData1, readData2);
-                    
-    parameter WordLen = 32;
-    parameter WordCount = 32;
+    input RegWrite, clk;
+    input [4:0] ReadReg1, ReadReg2, WriteReg;
+    input [31:0] WriteD;
+    output [31:0] ReadData1, ReadData2;
 
-    input regWrite, clk;
-    input [`BITS(WordCount)-1:0] readRegister1, readRegister2, writeRegister;
-    input [WordLen-1:0] writeData;
-    output [WordLen-1:0] readData1, readData2;
-
-    reg [WordLen-1:0] registerFile [0:WordCount-1];
+    reg [31:0] registerFile [0:31];
 
     initial 
         registerFile[0] = 32'd0;
 
     always @(posedge clk) begin
-        if (regWrite & (|writeRegister))
-            registerFile[writeRegister] <= writeData;
+        if (RegWrite & (|WriteReg))
+            registerFile[WriteReg] <= WriteD;
     end
 
-    assign readData1 = registerFile[readRegister1];
-    assign readData2 = registerFile[readRegister2];
+    assign ReadData1 = registerFile[ReadReg1];
+    assign ReadData2 = registerFile[ReadReg2];
 
 endmodule

@@ -1,16 +1,15 @@
-module Register(in, en, rst, clk, out);
-    parameter N = 32;
+module Register(Input, Enable, rst, clk, Output);
 
-    input [N-1:0] in;
-    input en, clk, rst;
+    input [31:0] Input;
+    input Enable, clk, rst;
 
-    output reg [N-1:0] out;
+    output reg [31:0] Output;
 
     always @(posedge clk or posedge rst) begin
         if (rst)
-            out <= {N{1'b0}};
-        else if (en)
-            out <= in;
+            Output <= {32{1'b0}};
+        else if (Enable)
+            Output <= Input;
     end
 
 endmodule
