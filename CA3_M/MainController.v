@@ -74,25 +74,32 @@ end
 always @(ps) begin
     {resultSrc, memWrite, ALUOp, ALUSrcA, ALUSrcB, immSrc, regWrite, PCUpdate, branch, IRWrite} <= 14'b0;
     case (ps)
-        IF: begin IRWrite <= 1'b1; adrSrc <= 1'b0; ALUSrcA <= 2'b00; ALUSrcB <= 2'b10; ALUOp <= 2'b00; 
-        resultSrc <= 2'b10; PCUpdate <= 1'b1; end
+        IF: begin adrSrc <= 1'b0; ALUSrcA <= 2'b00; ALUSrcB <= 2'b10; ALUOp <= 2'b00; 
+        resultSrc <= 2'b10; {PCUpdate, IRWrite} <= 2'b11; end
+
         ID: begin ALUSrcA <= 2'b01; ALUSrcB <= 2'b01; ALUOp <= 2'b00; immSrc <= 3'b010; end
+
         EX_I: begin ALUSrcA <= 2'b10; ALUSrcB <= 2'b01; immSrc <= 3'b000; ALUOp <= 2'b11; end
         MEM_I: begin resultSrc <= 2'b00; regWrite <= 1'b1; end
-        EX_JALR: begin ALUSrcA <= 2'b10; ALUSrcB <= 2'b01; immSrc <= 3'b000; ALUOp <= 2'b00; end
-        MEM_JALR: begin ALUSrcA <= 2'b01; ALUSrcB <= 2'b10; ALUOp <= 2'b00; resultSrc <= 2'b00; PCUpdate <= 1'b1; end
-        EX_LW: begin ALUSrcA <= 2'b10; ALUSrcB <= 2'b01; immSrc <= 3'b000; ALUOp <= 2'b00; end
+
+        EX_JALR: begin ALUSrcA <= 2'b10; ALUSrcB <= 2'b01; {immSrc, ALUOp} <= 2'b00; end
+        MEM_JALR: begin ALUSrcA <= 2'b01; ALUSrcB <= 2'b10; {ALUOp, resultSrc} <= 2'b00; PCUpdate <= 1'b1; end
+
+        EX_LW: begin ALUSrcA <= 2'b10; ALUSrcB <= 2'b01; {immSrc, ALUOp} <= 2'b00; end
         MEM_LW: begin resultSrc <= 2'b00; adrSrc <= 1'b1; end
         WB_LW: begin resultSrc <= 2'b01; regWrite <= 1'b1; end
+
         EX_R: begin ALUSrcA <= 2'b10; ALUSrcB <= 2'b00; ALUOp <= 2'b10; end
         MEM_R: begin resultSrc <= 2'b00; regWrite <= 1'b1; end
-        EX_B: begin ALUSrcA <= 2'b10; ALUSrcB <= 2'b00; ALUOp <= 2'b01; resultSrc <= 2'b00; branch <= 1'b1; end
+        EX_B: begin ALUSrcA <= 2'b10; ALUOp <= 2'b01; {resultSrc, ALUSrcB} <= 2'b00; branch <= 1'b1; end
+
         EX_J: begin ALUSrcA <= 2'b01; ALUSrcB <= 2'b10; ALUOp <= 2'b00; end
-        MEM_J: begin resultSrc <= 2'b00; regWrite <= 1'b1; ALUSrcA <= 2'b01; ALUSrcB <= 2'b01; immSrc <= 3'b011;
-        ALUOp <= 2'b00; end
+        MEM_J: begin regWrite <= 1'b1; ALUSrcA <= 2'b01; ALUSrcB <= 2'b01; immSrc <= 3'b011;
+        {ALUOp, resultSrc} <= 2'b00; end
         WB_J: begin resultSrc <= 2'b00; PCUpdate <= 1'b1; end
-        EX_S: begin ALUSrcA <= 2'b10; ALUSrcB <= 2'b01; ALUOp <= 2'b00; immSrc <= 3'b001; end
-        MEM_S: begin resultSrc <= 2'b00; adrSrc <= 1'b1; memWrite <= 1'b1; end
+
+        EX_S: begin ALUSrcA <= 2'b10; ALUSrcB <= 2'b01; {ALUOp,immSrc} <= 2'b00; end
+        MEM_S: begin resultSrc <= 2'b00; {adrSrc, memWrite} <= 2'b11; end
         MEM_U: begin resultSrc <= 2'b11; immSrc <= 3'b100; regWrite <= 1'b1; end
     endcase
 end

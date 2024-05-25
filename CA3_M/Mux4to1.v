@@ -1,4 +1,4 @@
-module Mux4To1 (
+module Mux4to1 (
     input [1:0] slc,
     input [31:0] a,
     input [31:0] b,

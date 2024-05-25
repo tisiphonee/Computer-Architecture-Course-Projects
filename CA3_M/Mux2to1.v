@@ -1,4 +1,4 @@
-module Mux2To1 (slc, a, b, w);
+module Mux2to1 (slc, a, b, w);
 
     input slc;
     input [31:0] a;
