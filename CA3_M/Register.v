@@ -1,13 +1,12 @@
 module Register(Input, Enable, rst, clk, Output);
 
-    input [31:0] Input;
     input Enable, clk, rst;
-
+    input [31:0] Input;
     output reg [31:0] Output;
 
     always @(posedge clk or posedge rst) begin
         if (rst)
-            Output <= {32{1'b0}};
+            Output <= 32'b0;
         else if (Enable)
             Output <= Input;
     end

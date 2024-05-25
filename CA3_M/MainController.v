@@ -7,7 +7,7 @@ module MainController(
     output reg adrSrc, regWrite, memWrite, PCUpdate, branch, IRWrite
 );
 
-parameter [6:0] R_T    = 7'b0110011,
+parameter [6:0]  R_T    = 7'b0110011,
                  I_T    = 7'b0010011,
                  S_T    = 7'b0100011,
                  B_T    = 7'b1100011,
