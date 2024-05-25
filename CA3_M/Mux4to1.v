@@ -1,5 +1,5 @@
 module Mux4to1 (
-    input [1:0] slc,
+    input [1:0] sel,
     input [31:0] a,
     input [31:0] b,
     input [31:0] c,
@@ -8,7 +8,7 @@ module Mux4to1 (
 );
 
     always @* begin
-        case (slc)
+        case (sel)
             2'b00: w = a;
             2'b01: w = b;
             2'b10: w = c;

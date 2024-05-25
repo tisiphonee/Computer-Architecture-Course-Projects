@@ -23,11 +23,11 @@ module RISC_V_Datapath(clk, rst, PCWrite, AdrSlc, MemWrite,
     Register BR    (.Input(RD2),       .Enable(1'b1),    .rst(rst), .clk(clk), .Output(B));
     Register ALUR  (.Input(ALUResult), .Enable(1'b1),    .rst(rst), .clk(clk), .Output(ALUOut));
 
-    Mux2to1 AdrMux(.slc(AdrSlc),    .a(PC),     .b(Result), .w(Adr));
+    Mux2to1 AdrMux(.sel(AdrSlc),    .a(PC),     .b(Result), .w(Adr));
 
-    Mux4to1 AMux     (.slc(InputA),   .a(PC),     .b(OldPC),  .c(A),         .d(32'd0),  .w(SrcA));
-    Mux4to1 BMux     (.slc(InputB),   .a(B),      .b(ImmExt), .c(32'd4),     .d(32'd0),  .w(SrcB));
-    Mux4to1 ResultMux(.slc(ResultSlc), .a(ALUOut), .b(Data),   .c(ALUResult), .d(ImmExt), .w(Result));
+    Mux4to1 AMux     (.sel(InputA),   .a(PC),     .b(OldPC),  .c(A),         .d(32'd0),  .w(SrcA));
+    Mux4to1 BMux     (.sel(InputB),   .a(B),      .b(ImmExt), .c(32'd4),     .d(32'd0),  .w(SrcB));
+    Mux4to1 ResultMux(.sel(ResultSlc), .a(ALUOut), .b(Data),   .c(ALUResult), .d(ImmExt), .w(Result));
 
     ImmExtension Extend(
         .ImmSlc(ImmSlc), .ImmData(instr[31:7]), .Result(ImmExt)

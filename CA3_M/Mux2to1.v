@@ -1,12 +1,12 @@
-module Mux2to1 (slc, a, b, w);
+module Mux2to1 (sel, a, b, w);
 
-    input slc;
+    input sel;
     input [31:0] a;
     input [31:0] b;
     output reg [31:0] w;
 
     always @* begin
-        w = slc ? b : a;
+        w = sel ? b : a;
     end
 
 endmodule
