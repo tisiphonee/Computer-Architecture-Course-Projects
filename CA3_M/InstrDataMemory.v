@@ -9,7 +9,7 @@ module InstrDataMemory (memAdr, writeData, memWrite, clk, readData);
     wire [31:0] adr;
     assign adr = {memAdr[31:2], 2'b00};
     
-    initial $readmemb("test_cases/arr3.mem", dataMem);
+    initial $readmemb("test_cases/arr1.mem", dataMem);
 
     always @(posedge clk) begin
         if (memWrite)

@@ -1,10 +1,10 @@
 module MainController(
     input clk, rst,
-    input [6:0] op,
     input zero, neg,
-    output reg [1:0] resultSrc, ALUSrcA, ALUSrcB, ALUOp,
+    input [6:0] op,
     output reg [2:0] immSrc,
-    output reg adrSrc, regWrite, memWrite, PCUpdate, branch, IRWrite
+    output reg adrSrc, regWrite, memWrite, PCUpdate, branch, IRWrite,
+    output reg [1:0] resultSrc, ALUSrcA, ALUSrcB, ALUOp
 );
 
 parameter [6:0]  R_T    = 7'b0110011,

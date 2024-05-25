@@ -12,7 +12,8 @@ module Mux4to1 (
             2'b00: w = a;
             2'b01: w = b;
             2'b10: w = c;
-            default: w = d;
+            2'b11: w = d;
+            default: w = 32'bz;
         endcase
     end
 

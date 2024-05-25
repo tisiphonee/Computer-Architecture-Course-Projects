@@ -3,17 +3,17 @@ module RISC_V_Datapath(clk, rst, PCWrite, AdrSlc, MemWrite,
                     InputA, InputB, ImmSlc, RegWrite,
                     Opcode, Func3, Func7, ZeroFlag, NegFlag);
 
-    input clk, rst, PCWrite, AdrSlc, MemWrite, IRWrite, RegWrite;
-    input [1:0] ResultSlc, InputA, InputB;
     input [2:0] AluOpcode, ImmSlc;
+    input [1:0] ResultSlc, InputA, InputB;
+    input clk, rst, PCWrite, AdrSlc, MemWrite, IRWrite, RegWrite;
     output [6:0] Opcode;
-    output [2:0] Func3;
     output Func7, ZeroFlag, NegFlag;
+    output [2:0] Func3;
 
-    wire [31:0] PC, Adr, ReadData, OldPC;
+    wire [31:0] ALUResult, ALUOut,Result;
     wire [31:0] ImmExt, instr, Data;
     wire [31:0] RD1, RD2, A, B, SrcA, SrcB;
-    wire [31:0] ALUResult, ALUOut,Result;
+    wire [31:0] PC, Adr, ReadData, OldPC;
 
     Register PCR   (.Input(Result),    .Enable(PCWrite), .rst(rst), .clk(clk), .Output(PC));
     Register OldPCR(.Input(PC),        .Enable(IRWrite), .rst(rst), .clk(clk), .Output(OldPC));

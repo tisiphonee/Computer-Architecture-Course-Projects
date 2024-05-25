@@ -1,7 +1,7 @@
 module Register(Input, Enable, rst, clk, Output);
 
-    input Enable, clk, rst;
     input [31:0] Input;
+    input Enable, clk, rst;
     output reg [31:0] Output;
 
     always @(posedge clk or posedge rst) begin

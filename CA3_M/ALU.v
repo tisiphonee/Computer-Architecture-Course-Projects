@@ -10,23 +10,22 @@ module ALU(AluOpcode, InputA , InputB, ZeroFlag, NegFlag, Result);
 
     input [2:0] AluOpcode;
     input signed [31:0] InputA, InputB;
-    
-    output reg signed [31:0] Result;
     output ZeroFlag, NegFlag;
+    output reg signed [31:0] Result;
     
     always @(InputA or InputB or AluOpcode) begin
         case (AluOpcode)
             ADD   :  Result = InputA + InputB;
             SUB   :  Result = InputA - InputB;
-            AND   :  Result = InputA & InputB;
             OR    :  Result = InputA | InputB;
+            AND   :  Result = InputA & InputB;
             SLT   :  Result = InputA < InputB ? 32'd1 : 32'd0;
-            SLTU  :  Result = {1'b0, InputA} < {1'b0, InputB} ? 32'd1 : 32'd0;
             XOR   :  Result = InputA ^ InputB;
+            SLTU  :  Result = {1'b0, InputA} < {1'b0, InputB} ? 32'd1 : 32'd0;
         endcase
     end
 
-    assign ZeroFlag = (~|Result);
     assign NegFlag = Result[31];
+    assign ZeroFlag = (~|Result);
 
 endmodule
