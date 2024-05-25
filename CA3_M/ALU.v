@@ -1,34 +1,32 @@
-`define ADD 3'b000
-`define SUB 3'b001
-`define AND 3'b010
-`define OR  3'b011
-`define SLT 3'b101
-`define XOR 3'b100
-`define SLTU 3'b110
+module ALU(AluOpcode, InputA , InputB, ZeroFlag, NegFlag, Result);
 
-module ALU(ALUControl, a, b, zero, neg, w);
-    parameter N = 32;
+    parameter[2:0] ADD = 3'b000,
+                   SUB = 3'b001,
+                   AND = 3'b010,
+                   OR = 3'b011,
+                   SLT = 3'b101,
+                   SLTU = 3'b100,
+                   XOR = 3'b110;
 
-    input [2:0] ALUControl;
-    input signed [N-1:0] a, b;
+    input [2:0] AluOpcode;
+    input signed [31:0] InputA, InputB;
     
-    output zero, neg;
-    output reg signed [N-1:0] w;
+    output reg signed [31:0] Result;
+    output ZeroFlag, NegFlag;
     
-    always @(a or b or ALUControl) begin
-        case (ALUControl)
-            `ADD   :  w = a + b;
-            `SUB   :  w = a - b;
-            `AND   :  w = a & b;
-            `OR    :  w = a | b;
-            `SLTU  :  w = {1'b0, a} < {1'b0, b} ? 32'd1 : 32'd0;
-            `SLT   :  w = a < b ? 32'd1 : 32'd0;
-            `XOR   :  w = a ^ b;
-            default:  w = {N{1'bz}};
+    always @(InputA or InputB or AluOpcode) begin
+        case (AluOpcode)
+            ADD   :  Result = InputA + InputB;
+            SUB   :  Result = InputA - InputB;
+            AND   :  Result = InputA & InputB;
+            OR    :  Result = InputA | InputB;
+            SLT   :  Result = InputA < InputB ? 32'd1 : 32'd0;
+            SLTU  :  Result = {1'b0, InputA} < {1'b0, InputB} ? 32'd1 : 32'd0;
+            XOR   :  Result = InputA ^ InputB;
         endcase
     end
 
-    assign zero = (~|w);
-    assign neg = w[N-1];
+    assign ZeroFlag = (~|Result);
+    assign NegFlag = Result[31];
 
 endmodule
