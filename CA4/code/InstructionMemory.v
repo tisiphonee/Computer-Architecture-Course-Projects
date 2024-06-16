@@ -9,7 +9,7 @@ module InstructionMemory(pc, instruction);
     wire [31:0] adr;
     assign adr = {pc[31:2], 2'b00}; 
 
-    initial $readmemb("instructions.mem", instructionMemory);
+    initial $readmemb("binary_instructions.mem", instructionMemory);
 
     assign instruction = {instructionMemory[adr], instructionMemory[adr + 1], 
                             instructionMemory[adr + 2], instructionMemory[adr + 3]};

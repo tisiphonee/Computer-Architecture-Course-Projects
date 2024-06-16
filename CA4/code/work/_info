@@ -1,0 +1,515 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dD:/modelsim
+vAdder
+Z0 !s110 1718536811
+!i10b 1
+!s100 hQdLIH4<bDl5mb;gDIUHX1
+Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IhIEMGQBkJM=koS9CDbiVE1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+Z3 dD:/Memari/CA_Project/CA4/code
+Z4 w1718535101
+8D:/Memari/CA_Project/CA4/code/Adder.v
+FD:/Memari/CA_Project/CA4/code/Adder.v
+!i122 0
+Z5 L0 1 11
+Z6 OV;L;2020.1;71
+r1
+!s85 0
+31
+!s108 1718536810.000000
+!s107 D:/Memari/CA_Project/CA4/code/Adder.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Memari/CA_Project/CA4/code/Adder.v|
+!i113 1
+Z7 o-work work
+Z8 tCvgOpt 0
+n@adder
+vALU
+R0
+!i10b 1
+!s100 Q:@?kJ2MV?RUo5VBijO_Z3
+R1
+I6@VJUaF4`KE8BNJKeJ`j50
+R2
+R3
+R4
+8D:/Memari/CA_Project/CA4/code/ALU.v
+FD:/Memari/CA_Project/CA4/code/ALU.v
+!i122 1
+L0 8 25
+R6
+r1
+!s85 0
+31
+Z9 !s108 1718536811.000000
+!s107 D:/Memari/CA_Project/CA4/code/ALU.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Memari/CA_Project/CA4/code/ALU.v|
+!i113 1
+R7
+R8
+n@a@l@u
+vALU_Controller
+R0
+!i10b 1
+!s100 BKIGSJVA9zcaz>7oQ6cTJ3
+R1
+IFlFg20BU[Y^ShDoHaHo>R2
+R2
+R3
+R4
+8D:/Memari/CA_Project/CA4/code/ALU_Controller.v
+FD:/Memari/CA_Project/CA4/code/ALU_Controller.v
+!i122 2
+L0 14 27
+R6
+r1
+!s85 0
+31
+R9
+!s107 D:/Memari/CA_Project/CA4/code/ALU_Controller.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Memari/CA_Project/CA4/code/ALU_Controller.v|
+!i113 1
+R7
+R8
+n@a@l@u_@controller
+vBranchController
+R0
+!i10b 1
+!s100 g[U[^QW`jo:gm=AOlC]^:1
+R1
+IdHiLW<CA4^>1D5zI9fPK_1
+R2
+R3
+R4
+8D:/Memari/CA_Project/CA4/code/BranchController.v
+FD:/Memari/CA_Project/CA4/code/BranchController.v
+!i122 3
+L0 11 21
+R6
+r1
+!s85 0
+31
+R9
+!s107 D:/Memari/CA_Project/CA4/code/BranchController.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Memari/CA_Project/CA4/code/BranchController.v|
+!i113 1
+R7
+R8
+n@branch@controller
+vDataMemory
+!s110 1718543466
+!i10b 1
+!s100 1DkH:SXk[;]FO3gNBjVFm0
+R1
+I>og@J65zz@;VWZV:Q?8=50
+R2
+R3
+w1718543462
+8D:/Memari/CA_Project/CA4/code/DataMemory.v
+FD:/Memari/CA_Project/CA4/code/DataMemory.v
+!i122 26
+L0 1 25
+R6
+r1
+!s85 0
+31
+!s108 1718543466.000000
+!s107 D:/Memari/CA_Project/CA4/code/DataMemory.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Memari/CA_Project/CA4/code/DataMemory.v|
+!i113 1
+R7
+R8
+n@data@memory
+vHazardUnit
+Z10 !s110 1718536812
+!i10b 1
+!s100 S<>VW1S:N?DkXOQAhhXk52
+R1
+IAVE6HJL3>^`ziIkEfB_VH2
+R2
+R3
+R4
+8D:/Memari/CA_Project/CA4/code/HazardUnit.v
+FD:/Memari/CA_Project/CA4/code/HazardUnit.v
+!i122 5
+L0 1 43
+R6
+r1
+!s85 0
+31
+Z11 !s108 1718536812.000000
+!s107 D:/Memari/CA_Project/CA4/code/HazardUnit.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Memari/CA_Project/CA4/code/HazardUnit.v|
+!i113 1
+R7
+R8
+n@hazard@unit
+vImmExtension
+R10
+!i10b 1
+!s100 1U@l4G0L2@idzB<a>RSKS2
+R1
+I>HKaf9c;`=N`Ez`bD2KHj3
+R2
+R3
+R4
+8D:/Memari/CA_Project/CA4/code/ImmediateExtend.v
+FD:/Memari/CA_Project/CA4/code/ImmediateExtend.v
+!i122 6
+L0 7 19
+R6
+r1
+!s85 0
+31
+R11
+!s107 D:/Memari/CA_Project/CA4/code/ImmediateExtend.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Memari/CA_Project/CA4/code/ImmediateExtend.v|
+!i113 1
+R7
+R8
+n@imm@extension
+vInstructionMemory
+R10
+!i10b 1
+!s100 nNZU[FQQdXK82^`MPeIOR3
+R1
+I;e?PH=f<V504ki82_ST1E0
+R2
+R3
+w1718536552
+8D:/Memari/CA_Project/CA4/code/InstructionMemory.v
+FD:/Memari/CA_Project/CA4/code/InstructionMemory.v
+!i122 7
+L0 1 17
+R6
+r1
+!s85 0
+31
+R11
+!s107 D:/Memari/CA_Project/CA4/code/InstructionMemory.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Memari/CA_Project/CA4/code/InstructionMemory.v|
+!i113 1
+R7
+R8
+n@instruction@memory
+vMainController
+R10
+!i10b 1
+!s100 =KGD`l4nAbX^VGN2NiiAe2
+R1
+IF=^N8=cD3_Ek16c;AM9cb2
+R2
+R3
+R4
+8D:/Memari/CA_Project/CA4/code/MainController.v
+FD:/Memari/CA_Project/CA4/code/MainController.v
+!i122 8
+L0 15 87
+R6
+r1
+!s85 0
+31
+R11
+!s107 D:/Memari/CA_Project/CA4/code/MainController.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Memari/CA_Project/CA4/code/MainController.v|
+!i113 1
+R7
+R8
+n@main@controller
+vMux2to1
+R10
+!i10b 1
+!s100 cb`4Q<:]nZIQnfQO1fVc<1
+R1
+IYV8hQ`TRVbejW]ai:YMd[2
+R2
+R3
+R4
+8D:\Memari\CA_Project\CA4\code\Mux2to1.v
+FD:\Memari\CA_Project\CA4\code\Mux2to1.v
+!i122 9
+R5
+R6
+r1
+!s85 0
+31
+R11
+!s107 D:\Memari\CA_Project\CA4\code\Mux2to1.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:\Memari\CA_Project\CA4\code\Mux2to1.v|
+!i113 1
+R7
+R8
+n@mux2to1
+vMux4to1
+R10
+!i10b 1
+!s100 gnMz@h`3Y=KM;WCZJ_CPL0
+R1
+IXm;9aTF1EV3FYhDffJSXz1
+R2
+R3
+R4
+8D:/Memari/CA_Project/CA4/code/Mux4to1.v
+FD:/Memari/CA_Project/CA4/code/Mux4to1.v
+!i122 10
+L0 1 19
+R6
+r1
+!s85 0
+31
+R11
+!s107 D:/Memari/CA_Project/CA4/code/Mux4to1.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Memari/CA_Project/CA4/code/Mux4to1.v|
+!i113 1
+R7
+R8
+n@mux4to1
+vRegEX_MEM
+R10
+!i10b 1
+!s100 T3Oc;Ih^BMRR[[d5gFgm91
+R1
+I7=BKeUFbzY8@o>FFaUe`?3
+R2
+R3
+R4
+8D:/Memari/CA_Project/CA4/code/RegEX_Mem.v
+FD:/Memari/CA_Project/CA4/code/RegEX_Mem.v
+!i122 11
+L0 1 44
+R6
+r1
+!s85 0
+31
+R11
+!s107 D:/Memari/CA_Project/CA4/code/RegEX_Mem.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Memari/CA_Project/CA4/code/RegEX_Mem.v|
+!i113 1
+R7
+R8
+n@reg@e@x_@m@e@m
+vRegID_EX
+Z12 !s110 1718536813
+!i10b 1
+!s100 g2c93fbGmI_>lYog<jJma0
+R1
+IAgd@74M6eWbZOL8I1coeo1
+R2
+R3
+R4
+8D:/Memari/CA_Project/CA4/code/RegID_EX.v
+FD:/Memari/CA_Project/CA4/code/RegID_EX.v
+!i122 12
+L0 1 60
+R6
+r1
+!s85 0
+31
+R11
+!s107 D:/Memari/CA_Project/CA4/code/RegID_EX.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Memari/CA_Project/CA4/code/RegID_EX.v|
+!i113 1
+R7
+R8
+n@reg@i@d_@e@x
+vRegIF_ID
+R12
+!i10b 1
+!s100 ShA1d^kz2d9KlbNMO3XjT3
+R1
+In@b49=RDg_hViENK=>]P23
+R2
+R3
+R4
+8D:/Memari/CA_Project/CA4/code/RegIF_ID.v
+FD:/Memari/CA_Project/CA4/code/RegIF_ID.v
+!i122 13
+Z13 L0 1 26
+R6
+r1
+!s85 0
+31
+Z14 !s108 1718536813.000000
+!s107 D:/Memari/CA_Project/CA4/code/RegIF_ID.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Memari/CA_Project/CA4/code/RegIF_ID.v|
+!i113 1
+R7
+R8
+n@reg@i@f_@i@d
+vRegister
+R12
+!i10b 1
+!s100 _Mh<7[O1kJ7D@W_W[XY<M2
+R1
+Il0<]0lP5BDK?;?NDcU;RY3
+R2
+R3
+R4
+8D:/Memari/CA_Project/CA4/code/Register.v
+FD:/Memari/CA_Project/CA4/code/Register.v
+!i122 14
+L0 1 16
+R6
+r1
+!s85 0
+31
+R14
+!s107 D:/Memari/CA_Project/CA4/code/Register.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Memari/CA_Project/CA4/code/Register.v|
+!i113 1
+R7
+R8
+n@register
+vRegisterFile
+R12
+!i10b 1
+!s100 g[@BDDaGl<0ZHd3Y@LK6^2
+R1
+Id2V;NVWeJiFX6S7YgAY5<1
+R2
+R3
+R4
+8D:/Memari/CA_Project/CA4/code/RegisterFile.v
+FD:/Memari/CA_Project/CA4/code/RegisterFile.v
+!i122 15
+L0 3 30
+R6
+r1
+!s85 0
+31
+R14
+!s107 D:/Memari/CA_Project/CA4/code/RegisterFile.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Memari/CA_Project/CA4/code/RegisterFile.v|
+!i113 1
+R7
+R8
+n@register@file
+vRegMEM_WB
+R12
+!i10b 1
+!s100 c@PEMWUV]e3lGef29Aa581
+R1
+IPU9RHVclfJJ53WD5a_fHm1
+R2
+R3
+R4
+8D:/Memari/CA_Project/CA4/code/RegMEM_WB.v
+FD:/Memari/CA_Project/CA4/code/RegMEM_WB.v
+!i122 16
+L0 1 40
+R6
+r1
+!s85 0
+31
+R14
+!s107 D:/Memari/CA_Project/CA4/code/RegMEM_WB.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Memari/CA_Project/CA4/code/RegMEM_WB.v|
+!i113 1
+R7
+R8
+n@reg@m@e@m_@w@b
+vRISC_V
+R12
+!i10b 1
+!s100 zU3>RK7fid;4E>H?I3X^71
+R1
+IbPUK:ChWRRgOWa9I<n9i91
+R2
+R3
+R4
+8D:/Memari/CA_Project/CA4/code/RISC_V.v
+FD:/Memari/CA_Project/CA4/code/RISC_V.v
+!i122 17
+R13
+R6
+r1
+!s85 0
+31
+R14
+!s107 D:/Memari/CA_Project/CA4/code/RISC_V.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Memari/CA_Project/CA4/code/RISC_V.v|
+!i113 1
+R7
+R8
+n@r@i@s@c_@v
+vRISC_V_Controller
+R12
+!i10b 1
+!s100 LBbN8`<_n@8P[=JJ97cYE0
+R1
+I4[=?jLE5BT4<RXd`j@Ymo3
+R2
+R3
+R4
+8D:/Memari/CA_Project/CA4/code/RISC_V_Controller.v
+FD:/Memari/CA_Project/CA4/code/RISC_V_Controller.v
+!i122 18
+L0 1 27
+R6
+r1
+!s85 0
+31
+R14
+!s107 D:/Memari/CA_Project/CA4/code/RISC_V_Controller.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Memari/CA_Project/CA4/code/RISC_V_Controller.v|
+!i113 1
+R7
+R8
+n@r@i@s@c_@v_@controller
+vRISC_V_Datapath
+!s110 1718536814
+!i10b 1
+!s100 Tl`FHYL7O^c2N]@LIKgW10
+R1
+Ic1<52ZKNY]Ulm]1Jc]KdE0
+R2
+R3
+R4
+8D:/Memari/CA_Project/CA4/code/RISC_V_Datapath.v
+FD:/Memari/CA_Project/CA4/code/RISC_V_Datapath.v
+!i122 19
+L0 1 184
+R6
+r1
+!s85 0
+31
+R14
+!s107 D:/Memari/CA_Project/CA4/code/RISC_V_Datapath.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Memari/CA_Project/CA4/code/RISC_V_Datapath.v|
+!i113 1
+R7
+R8
+n@r@i@s@c_@v_@datapath
+vTB
+!s110 1718542590
+!i10b 1
+!s100 IbZkRK1mok86@beUfFg[?1
+R1
+IY`T[_UaMQg4a@11IE>hA>0
+R2
+R3
+w1718542587
+8D:/Memari/CA_Project/CA4/code/TestBench.v
+FD:/Memari/CA_Project/CA4/code/TestBench.v
+!i122 22
+L0 1 13
+R6
+r1
+!s85 0
+31
+!s108 1718542590.000000
+!s107 D:/Memari/CA_Project/CA4/code/TestBench.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Memari/CA_Project/CA4/code/TestBench.v|
+!i113 1
+R7
+R8
+n@t@b
