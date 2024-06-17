@@ -1,15 +1,18 @@
-module RISC_V_Datapath(clk, rst, regWriteD, resultSrcD, 
-                       memWriteD, jumpD, branchD, 
-                       ALUControlD, ALUSrcD, immSrcD, 
-                       luiD, op, func3, func7);
-
-    input clk, rst, regWriteD, memWriteD, ALUSrcD, luiD;
-    input [1:0] resultSrcD, jumpD;
-    input [2:0] ALUControlD, branchD, immSrcD;
-
-    output [6:0] op;
-    output [2:0] func3;
-    output func7;
+module RISC_V_Datapath(
+    input clk, 
+    input rst, 
+    input regWriteD, 
+    input memWriteD, 
+    input ALUSrcD, 
+    input luiD,
+    input [1:0] resultSrcD, 
+    input [1:0] jumpD,
+    input [2:0] ALUControlD, 
+    input [2:0] branchD, 
+    input [2:0] immSrcD,
+    output [6:0] op,
+    output [2:0] func3,
+    output func7);
 
     wire regWriteW, regWriteM, memWriteM, luiE, 
          luiM, regWriteE, 
