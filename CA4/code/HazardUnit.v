@@ -1,13 +1,10 @@
-module HazardUnit(Rs1D, Rs2D, RdE, RdM, RdW, Rs2E, Rs1E,
-                 PCSrcE, resultSrc0, regWriteW,
-                 regWriteM, stallF, stallD, flushD,
-                 flushE, forwardAE, forwardBE, luiM);
-
-    input [4:0] Rs1D, Rs2D, RdE, RdM, RdW, Rs1E, Rs2E;
-    input [1:0] PCSrcE;
-    input regWriteM, regWriteW, resultSrc0, luiM;
-    output reg [1:0] forwardAE, forwardBE;
-    output reg stallF, stallD, flushD, flushE;
+module HazardUnit(
+    input [4:0] Rs1D, Rs2D, RdE, RdM, RdW, Rs1E, Rs2E,
+    input [1:0] PCSrcE,
+    input regWriteM, regWriteW, resultSrc0, luiM,
+    output reg [1:0] forwardAE, forwardBE,
+    output reg stallF, stallD, flushD, flushE
+);
 
     always @(Rs1E or RdM or RdW or regWriteM or regWriteW) begin
         if(Rs1E == 5'b0)

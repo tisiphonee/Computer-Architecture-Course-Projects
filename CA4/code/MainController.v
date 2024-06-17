@@ -1,37 +1,35 @@
-`define R_T     7'b0110011
-`define I_T     7'b0010011
-`define S_T     7'b0100011
-`define B_T     7'b1100011
-`define U_T     7'b0110111
-`define J_T     7'b1101111
-`define LW_T    7'b0000011
-`define JALR_T  7'b1100111
+module MainController(
+    input [6:0] op,
+    input [2:0] func3,
+    output reg memWriteD, regWriteD, ALUSrcD, luiD,
+    output reg [1:0] resultSrcD, jumpD, ALUOp,
+    output reg [2:0] branchD, immSrcD
+);
 
-`define BEQ 3'b000
-`define BNE 3'b001
-`define BLT 3'b010
-`define BGE 3'b011
+    parameter[6:0] R_T = 7'b0110011,
+                   I_T = 7'b0010011,
+                   S_T = 7'b0100011,
+                   B_T = 7'b1100011,
+                   U_T = 7'b0110111,
+                   J_T = 7'b1101111,
+                   LW_T = 7'b0000011,
+                   JALR_T = 7'b1100111;
 
-module MainController(op, func3, regWriteD, ALUOp,
-                      resultSrcD, memWriteD, jumpD,
-                      branchD, ALUSrcD, immSrcD, luiD);
-
-    input [6:0] op;
-    input [2:0] func3;
-    output reg memWriteD, regWriteD, ALUSrcD, luiD;
-    output reg [1:0] resultSrcD, jumpD, ALUOp;
-    output reg [2:0] branchD, immSrcD;
+    parameter[2:0] BEQ = 3'b000,
+                   BNE = 3'b001,
+                   BLT = 3'b010,
+                   BGE = 3'b011;
 
     always @(op, func3) begin
         {ALUOp, regWriteD, immSrcD, ALUSrcD, memWriteD, 
              resultSrcD, jumpD, ALUOp, branchD, immSrcD, luiD} <= 16'b0;
         case (op)
-            `R_T: begin
+            R_T: begin
                 ALUOp      <= 2'b10;
                 regWriteD  <= 1'b1;
             end
         
-            `I_T: begin
+            I_T: begin
                 ALUOp      <= 2'b11;
                 regWriteD  <= 1'b1;
                 immSrcD    <= 3'b000;
@@ -39,40 +37,40 @@ module MainController(op, func3, regWriteD, ALUOp,
                 resultSrcD <= 2'b00;
             end
         
-            `S_T: begin
+            S_T: begin
                 ALUOp      <= 2'b00;
                 memWriteD  <= 1'b1;
                 immSrcD    <= 3'b001;
                 ALUSrcD    <= 1'b1;
             end
         
-            `B_T: begin
+            B_T: begin
                 ALUOp      <= 2'b01;
                 immSrcD    <= 3'b010;
                 case (func3)
-                    `BEQ   : branchD <= 3'b001;
-                    `BNE   : branchD <= 3'b010;
-                    `BLT   : branchD <= 3'b011;
-                    `BGE   : branchD <= 3'b100;
+                    BEQ   : branchD <= 3'b001;
+                    BNE   : branchD <= 3'b010;
+                    BLT   : branchD <= 3'b011;
+                    BGE   : branchD <= 3'b100;
                     default: branchD <= 3'b000;
                 endcase
             end
         
-            `U_T: begin
+            U_T: begin
                 resultSrcD <= 2'b11;
                 immSrcD    <= 3'b100;
                 regWriteD  <= 1'b1;
                 luiD       <= 1'b1;
             end
         
-            `J_T: begin
+            J_T: begin
                 resultSrcD <= 2'b10;
                 immSrcD    <= 3'b011;
                 jumpD      <= 2'b01;
                 regWriteD  <= 1'b1;
             end
         
-            `LW_T: begin
+            LW_T: begin
                 ALUOp      <= 2'b00;
                 regWriteD  <= 1'b1;
                 immSrcD    <= 3'b000;
@@ -80,7 +78,7 @@ module MainController(op, func3, regWriteD, ALUOp,
                 resultSrcD <= 2'b01;
             end
         
-            `JALR_T: begin
+            JALR_T: begin
                 ALUOp      <= 2'b00;
                 regWriteD  <= 1'b1;
                 immSrcD    <= 3'b000;

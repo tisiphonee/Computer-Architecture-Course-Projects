@@ -1,18 +1,21 @@
-module RegMEM_WB(clk, rst, regWriteM, resultSrcM,
-                 ALUResultM, RDM, RdM, PCPlus4M,
-                extImmM, extImmW, regWriteW, resultSrcW,
-                ALUResultW, RDW, RdW, PCPlus4W);
+module RegMEM_WB(
+    input clk, 
+    input rst, 
+    input regWriteM,
+    input [1:0] resultSrcM,
+    input [4:0] RdM,
+    input [31:0] ALUResultM, 
+    input [31:0]RDM, 
+    input [31:0]PCPlus4M, 
+    input [31:0]extImmM,
+    output reg regWriteW,
+    output reg [1:0] resultSrcW,
+    output reg [4:0] RdW,
+    output reg [31:0] ALUResultW, 
+    output reg [31:0]RDW, 
+    output reg [31:0]PCPlus4W, 
+    output reg [31:0]extImmW);
     
-    input clk, rst, regWriteM;
-    input [1:0] resultSrcM;
-    input [4:0] RdM;
-    input [31:0] ALUResultM, RDM, PCPlus4M, extImmM;
-
-    output reg regWriteW;
-    output reg [1:0] resultSrcW;
-    output reg [4:0] RdW;
-    output reg [31:0] ALUResultW, RDW, PCPlus4W, extImmW;
-
     always @(posedge clk or posedge rst) begin
         
         if (rst) begin

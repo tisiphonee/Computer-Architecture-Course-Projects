@@ -1,17 +1,14 @@
-module RegEX_MEM(clk, rst, regWriteE, resultSrcE, memWriteE,
-                 ALUResultE, writeDataE, RdE, PCPlus4E, luiE, extImmE,
-                 regWriteM, resultSrcM, memWriteM, ALUResultM,
-                 writeDataM, RdM, PCPlus4M, luiM,extImmM);
+module RegEX_MEM(
+    input clk, rst, memWriteE, regWriteE, luiE,
+    input [1:0] resultSrcE,
+    input [4:0] RdE,
+    input [31:0] ALUResultE, writeDataE, PCPlus4E, extImmE,
+    output reg  memWriteM, regWriteM , luiM,
+    output reg [1:0] resultSrcM,
+    output reg [4:0] RdM,
+    output reg [31:0] ALUResultM, writeDataM, PCPlus4M, extImmM
+);
 
-    input clk, rst, memWriteE, regWriteE, luiE;
-    input [1:0] resultSrcE;
-    input [4:0] RdE;
-    input [31:0] ALUResultE, writeDataE, PCPlus4E, extImmE;
-    
-    output reg  memWriteM, regWriteM , luiM;
-    output reg [1:0] resultSrcM;
-    output reg [4:0] RdM;
-    output reg [31:0] ALUResultM, writeDataM, PCPlus4M, extImmM;
 
     always @(posedge clk or posedge rst) begin
 

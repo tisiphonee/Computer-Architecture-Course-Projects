@@ -1,8 +1,7 @@
-module InstructionMemory(pc, instruction);
-
-    input [31:0] pc;
-
-    output [31:0] instruction;
+module InstructionMemory(
+    input [31:0] pc,
+    output [31:0] instruction
+);
 
     reg [7:0] instructionMemory [0:$pow(2, 16)-1]; 
 

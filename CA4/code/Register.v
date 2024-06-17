@@ -1,14 +1,14 @@
-module Register(in, clk, en, rst, out);
-    parameter N = 32;
+module Register(
+    input [31:0] in,
+    input clk, 
+    input rst, 
+    input en,
+    output reg [31:0] out);
 
-    input [N-1:0] in;
-    input clk, rst, en;
-
-    output reg [N-1:0] out;
     
     always @(posedge clk or posedge rst) begin
         if(rst)
-            out <= {N{1'b0}};
+            out <= {32{1'b0}};
         else if(en)
             out <= in;
     end
