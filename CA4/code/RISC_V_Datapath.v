@@ -46,7 +46,7 @@ module RISC_V_Datapath(
     );
 
     Mux4to1 PCmux(
-        .slc(PCSrcE), .a(PCPlus4F), .b(PCTargetE), 
+        .sel(PCSrcE), .a(PCPlus4F), .b(PCTargetE), 
         .c(ALUResultE), .d(32'bz), .w(PCF_Prime)
     );
 
@@ -112,15 +112,15 @@ module RISC_V_Datapath(
     
     // E    
     Mux4to1 SrcAreg (
-        .slc(forwardAE), .a(RD1E), .b(resultW), .c(ALUResultM), .d(luiM), .w(SrcAE)
+        .sel(forwardAE), .a(RD1E), .b(resultW), .c(ALUResultM), .d({31'b0, luiM}), .w(SrcAE)
     );
 
     Mux4to1 BSrcBreg(
-        .slc(forwardBE), .a(RD2E), .b(resultW), .c(ALUResultM), .d(luiM), .w(writeDataE)
+        .sel(forwardBE), .a(RD2E), .b(resultW), .c(ALUResultM), .d({31'b0, luiM}), .w(writeDataE)
     );
 
     Mux2to1 SrcBreg(
-        .slc(ALUSrcE), .a(writeDataE), .b(extImmE), .w(SrcBE)
+        .sel(ALUSrcE), .a(writeDataE), .b(extImmE), .w(SrcBE)
     );
 
     Adder PCEAdder(
@@ -143,31 +143,40 @@ module RISC_V_Datapath(
     // end E
 
     // M
-    DataMemory DM(
-        .memAdr(ALUResultM), .writeData(writeDataM), 
-        .memWrite(memWriteM), .clk(clk), .readData(RDM)
-    );
-
-    RegMEM_WB regMEMWB(
-        .clk(clk), .rst(rst), 
-
-        .regWriteM(regWriteM),     .regWriteW(regWriteW),
-        .ALUResultM(ALUResultM),   .ALUResultW(ALUResultW),
-        .RDM(RDM),                 .RDW(RDW),
-        .RdM(RdM),                 .RdW(RdW),
-        .resultSrcM(resultSrcM),   .resultSrcW(resultSrcW),  
-        .PCPlus4M(PCPlus4M),       .PCPlus4W(PCPlus4W),
-        .extImmM(extImmM),         .extImmW(extImmW)
+    PipelineM PipelineM_inst (
+        .ALUResultM(ALUResultM),
+        .writeDataM(writeDataM),
+        .memWriteM(memWriteM),
+        .clk(clk),
+        .RDM(RDM),
+        .regWriteM(regWriteM),
+        .regWriteW(regWriteW),
+        .ALUResultW(ALUResultW),
+        .RDW(RDW),
+        .RdM(RdM),
+        .RdW(RdW),
+        .resultSrcM(resultSrcM),
+        .resultSrcW(resultSrcW),
+        .PCPlus4M(PCPlus4M),
+        .PCPlus4W(PCPlus4W),
+        .extImmM(extImmM),
+        .extImmW(extImmW),
+        .rst(rst)
     );
     // end M
 
     // W
-    Mux4to1 resMux(
-        .slc(resultSrcW), .a(ALUResultW), .b(RDW), 
-        .c(PCPlus4W), .d(extImmW), .w(resultW)
+    PipelineW WStage (
+        .resultSrcW(resultSrcW),
+        .ALUResultW(ALUResultW),
+        .RDW(RDW),
+        .PCPlus4W(PCPlus4W),
+        .extImmW(extImmW),
+        .resultW(resultW)
     );
     // end W
-    
+
+
     HazardUnit hazard(
         .Rs1D(Rs1D), .Rs2D(Rs2D), 
         .Rs1E(Rs1E), .Rs2E(Rs2E),

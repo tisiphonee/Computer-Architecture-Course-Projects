@@ -1,11 +1,12 @@
-module Mux2to1(slc, a, b, w);
-    parameter N = 32;
-    
-    input slc;
-    input [N-1:0] a, b;
+module Mux2to1 (sel, a, b, w);
 
-    output [N-1:0] w;
-    
-    assign w = ~slc ? a : b;
+    input sel;
+    input [31:0] a;
+    input [31:0] b;
+    output reg [31:0] w;
+
+    always @* begin
+        w = sel ? b : a;
+    end
 
 endmodule
