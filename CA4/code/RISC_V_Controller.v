@@ -16,7 +16,7 @@ module RISC_V_Controller(
 
     wire [1:0] ALUOp;
 
-    MainController maindecoder(
+    MainController MainController(
         .op(op),
         .func3(func3),
         .regWriteD(regWriteD),

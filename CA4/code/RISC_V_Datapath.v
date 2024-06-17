@@ -53,7 +53,7 @@ module RISC_V_Datapath(
         .w(PCF_Prime)
     );
 
-    RegIF_ID regIFID(
+    RegIF_ID RegIFID(
         .clk(clk),
         .rst(rst), 
         .en(~stallD), 
@@ -93,7 +93,7 @@ module RISC_V_Datapath(
     );
 
 
-    RegID_EX regIDEX(
+    RegID_EX RegIDEX(
         .clk(clk),
         .rst(rst),
         .clr(flushE), 
@@ -132,15 +132,15 @@ module RISC_V_Datapath(
     );
      
     
-    Mux4to1 SrcAreg (
+    Mux4to1 SrcAReg (
         .sel(forwardAE), .a(RD1E), .b(resultW), .c(ALUResultM), .d({31'b0, luiM}), .w(SrcAE)
     );
 
-    Mux4to1 BSrcBreg(
+    Mux4to1 BSrcBReg(
         .sel(forwardBE), .a(RD2E), .b(resultW), .c(ALUResultM), .d({31'b0, luiM}), .w(writeDataE)
     );
 
-    Mux2to1 SrcBreg(
+    Mux2to1 SrcBReg(
         .sel(ALUSrcE), .a(writeDataE), .b(extImmE), .w(SrcBE)
     );
 
@@ -148,7 +148,7 @@ module RISC_V_Datapath(
         .a(PCE), .b(extImmE), .w(PCTargetE)
     );
 
-    RegEX_MEM regEXMEM(
+    RegEX_MEM RegEX_MEM(
         .clk(clk), 
         .rst(rst),
         .PCPlus4M(PCPlus4M),       
@@ -202,7 +202,7 @@ module RISC_V_Datapath(
     );
 
 
-    HazardUnit hazard(
+    HazardUnit Hazard(
         .Rs1D(Rs1D), 
         .Rs2D(Rs2D),
         .Rs1E(Rs1E), 
@@ -223,7 +223,7 @@ module RISC_V_Datapath(
         .forwardBE(forwardBE)
     );
 
-    BranchController JBprosecc(
+    BranchController BranchCotroller(
         .branchE(branchE), 
         .jumpE(jumpE), 
         .neg(neg), 
