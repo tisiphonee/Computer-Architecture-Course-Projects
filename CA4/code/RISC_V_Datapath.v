@@ -31,7 +31,13 @@ module RISC_V_Datapath(
                 PCPlus4D, instrD, PCD, RD1D, RD2D, extImmD,
                 PCF_Prime, PCF, instrF, PCPlus4F;
 
-    // F
+    assign op    = instrD[6:0];
+    assign RdD   = instrD[11:7];
+    assign func3 = instrD[14:12];
+    assign Rs1D  = instrD[19:15];
+    assign Rs2D  = instrD[24:20];
+    assign func7 = instrD[30];            
+
     Adder PCFAdder(
         .a(PCF), .b(32'd4), .w(PCPlus4F)
     );
@@ -58,9 +64,7 @@ module RISC_V_Datapath(
         .PCPlus4F(PCPlus4F),       .PCPlus4D(PCPlus4D),
         .instrF(instrF),           .instrD(instrD)
     );
-    // end F
 
-    // D
     RegisterFile RF(
         .clk(clk), .regWrite(regWriteW),
         .writeRegister(RdW), 
@@ -80,12 +84,7 @@ module RISC_V_Datapath(
         .zero(zero), .neg(neg), .w(ALUResultE)
     );
 
-    assign op    = instrD[6:0];
-    assign RdD   = instrD[11:7];
-    assign func3 = instrD[14:12];
-    assign Rs1D  = instrD[19:15];
-    assign Rs2D  = instrD[24:20];
-    assign func7 = instrD[30];
+
 
     RegID_EX regIDEX(
         .clk(clk), .rst(rst), .clr(flushE), 
@@ -108,9 +107,7 @@ module RISC_V_Datapath(
         .PCPlus4D(PCPlus4D),       .PCPlus4E(PCPlus4E) 
     );
      
-    // end D
     
-    // E    
     Mux4to1 SrcAreg (
         .sel(forwardAE), .a(RD1E), .b(resultW), .c(ALUResultM), .d({31'b0, luiM}), .w(SrcAE)
     );
@@ -140,10 +137,8 @@ module RISC_V_Datapath(
         .ALUResultE(ALUResultE),   .ALUResultM(ALUResultM),
         .extImmE(extImmE),         .extImmM(extImmM)
     );
-    // end E
 
-    // M
-    PipelineM PipelineM_inst (
+    PipelineM MStage (
         .ALUResultM(ALUResultM),
         .writeDataM(writeDataM),
         .memWriteM(memWriteM),
@@ -163,9 +158,7 @@ module RISC_V_Datapath(
         .extImmW(extImmW),
         .rst(rst)
     );
-    // end M
 
-    // W
     PipelineW WStage (
         .resultSrcW(resultSrcW),
         .ALUResultW(ALUResultW),
@@ -174,11 +167,10 @@ module RISC_V_Datapath(
         .extImmW(extImmW),
         .resultW(resultW)
     );
-    // end W
 
 
     HazardUnit hazard(
-        .Rs1D(Rs1D), .Rs2D(Rs2D), 
+        .Rs1D(Rs1D), .Rs2D(Rs2D),
         .Rs1E(Rs1E), .Rs2E(Rs2E),
         .RdE(RdE), .RdM(RdM), .RdW(RdW), .luiM(luiM),
         .PCSrcE(PCSrcE), .resultSrc0(resultSrcE[0]), 
