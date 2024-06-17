@@ -15,7 +15,8 @@ module ALU_Controller(
                    AND = 3'b010,
                    OR = 3'b011,
                    SLT = 3'b101,
-                   XOR = 3'b100;
+                   SLTU = 3'b100,
+                   XOR = 3'b110;
     
     always @(ALUOp or func3 or func7)begin
         case (ALUOp)
@@ -26,11 +27,13 @@ module ALU_Controller(
                         (func3 == 3'b000 & func7)  ? SUB:
                         (func3 == 3'b111) ? AND:
                         (func3 == 3'b110) ? OR:
+                        (func3 == 3'b011) ? SLTU:
                         (func3 == 3'b010) ? SLT : 3'bzzz;
             I_T   : ALUControl <=  
                         (func3 == 3'b000) ? ADD:
                         (func3 == 3'b100) ? XOR:
                         (func3 == 3'b110) ? OR:
+                        (func3 == 3'b011) ? SLTU:
                         (func3 == 3'b010) ? SLT: 3'bzzz;
             default: ALUControl <= ADD;
         endcase

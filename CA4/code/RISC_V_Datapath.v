@@ -38,73 +38,97 @@ module RISC_V_Datapath(
     assign Rs2D  = instrD[24:20];
     assign func7 = instrD[30];            
 
-    Adder PCFAdder(
-        .a(PCF), .b(32'd4), .w(PCPlus4F)
-    );
+    Adder PCFAdder(.a(PCF), .b(32'd4), .w(PCPlus4F));
 
-    Register PCreg(
-        .in(PCF_Prime), .clk(clk), .en(~stallF), 
-        .rst(rst), .out(PCF)
-    );
+    Register PCreg(.in(PCF_Prime), .clk(clk), .en(~stallF),.rst(rst), .out(PCF));
 
-    InstructionMemory IM(
-        .pc(PCF), .instruction(instrF)
-    );
+    InstructionMemory IM(.pc(PCF), .instruction(instrF));
 
     Mux4to1 PCmux(
-        .sel(PCSrcE), .a(PCPlus4F), .b(PCTargetE), 
-        .c(ALUResultE), .d(32'bz), .w(PCF_Prime)
+        .sel(PCSrcE), 
+        .a(PCPlus4F), 
+        .b(PCTargetE), 
+        .c(ALUResultE), 
+        .d(32'bz), 
+        .w(PCF_Prime)
     );
 
     RegIF_ID regIFID(
-        .clk(clk), .rst(rst), 
-        .en(~stallD), .clr(flushD),
-
-        .PCF(PCF),                 .PCD(PCD),
-        .PCPlus4F(PCPlus4F),       .PCPlus4D(PCPlus4D),
-        .instrF(instrF),           .instrD(instrD)
+        .clk(clk),
+        .rst(rst), 
+        .en(~stallD), 
+        .clr(flushD),
+        .PCF(PCF),                 
+        .PCD(PCD),
+        .PCPlus4F(PCPlus4F),       
+        .PCPlus4D(PCPlus4D),
+        .instrF(instrF),
+        .instrD(instrD)
     );
 
     RegisterFile RF(
-        .clk(clk), .regWrite(regWriteW),
+        .clk(clk), 
+        .regWrite(regWriteW),
         .writeRegister(RdW), 
         .writeData(resultW),
-        .readData1(RD1D), .readData2(RD2D),
+        .readData1(RD1D), 
+        .readData2(RD2D),
         .readRegister1(instrD[19:15]), 
         .readRegister2(instrD[24:20])
     );
     
     ImmExtension Extend(
-        .immSrc(immSrcD), .w(extImmD),
+        .immSrc(immSrcD), 
+        .w(extImmD),
         .data(instrD[31:7])
     );
 
     ALU ALU_Instance(
-        .ALUControl(ALUControlE), .a(SrcAE), .b(SrcBE), 
-        .zero(zero), .neg(neg), .w(ALUResultE)
+        .ALUControl(ALUControlE), 
+        .a(SrcAE), 
+        .b(SrcBE), 
+        .zero(zero), 
+        .neg(neg), 
+        .w(ALUResultE)
     );
 
 
-
     RegID_EX regIDEX(
-        .clk(clk), .rst(rst), .clr(flushE), 
-
-        .regWriteD(regWriteD),     .regWriteE(regWriteE), 
-        .PCD(PCD),                 .PCE(PCE),
-        .Rs1D(Rs1D),               .Rs1E(Rs1E),
-        .Rs2D(Rs2D),               .Rs2E(Rs2E),
-        .RdD(RdD),                 .RdE(RdE),
-        .RD1D(RD1D),               .RD1E(RD1E),
-        .RD2D(RD2D),               .RD2E(RD2E), 
-        .resultSrcD(resultSrcD),   .resultSrcE(resultSrcE),
-        .memWriteD(memWriteD),     .memWriteE(memWriteE),
-        .jumpD(jumpD),             .jumpE(jumpE),
-        .branchD(branchD),         .branchE(branchE),
-        .ALUControlD(ALUControlD), .ALUControlE(ALUControlE), 
-        .ALUSrcD(ALUSrcD),         .ALUSrcE(ALUSrcE),    
-        .extImmD(extImmD),         .extImmE(extImmE),
-        .luiD(luiD),               .luiE(luiE),
-        .PCPlus4D(PCPlus4D),       .PCPlus4E(PCPlus4E) 
+        .clk(clk),
+        .rst(rst),
+        .clr(flushE), 
+        .regWriteD(regWriteD),     
+        .regWriteE(regWriteE), 
+        .PCD(PCD),                 
+        .PCE(PCE),
+        .Rs1D(Rs1D),               
+        .Rs1E(Rs1E),
+        .Rs2D(Rs2D),               
+        .Rs2E(Rs2E),
+        .RdD(RdD),                 
+        .RdE(RdE),
+        .RD1D(RD1D),               
+        .RD1E(RD1E),
+        .RD2D(RD2D),               
+        .RD2E(RD2E), 
+        .resultSrcD(resultSrcD),   
+        .resultSrcE(resultSrcE),
+        .memWriteD(memWriteD),     
+        .memWriteE(memWriteE),
+        .jumpD(jumpD),             
+        .jumpE(jumpE),
+        .branchD(branchD),         
+        .branchE(branchE),
+        .ALUControlD(ALUControlD), 
+        .ALUControlE(ALUControlE), 
+        .ALUSrcD(ALUSrcD),         
+        .ALUSrcE(ALUSrcE),    
+        .extImmD(extImmD),         
+        .extImmE(extImmE),
+        .luiD(luiD),               
+        .luiE(luiE),
+        .PCPlus4D(PCPlus4D),       
+        .PCPlus4E(PCPlus4E) 
     );
      
     
@@ -125,17 +149,26 @@ module RISC_V_Datapath(
     );
 
     RegEX_MEM regEXMEM(
-        .clk(clk), .rst(rst), 
-
-        .PCPlus4M(PCPlus4M),       .PCPlus4E(PCPlus4E),
-        .resultSrcE(resultSrcE),   .resultSrcM(resultSrcM),
-        .writeDataE(writeDataE),   .writeDataM(writeDataM),
-        .luiE(luiE),               .luiM(luiM),
-        .regWriteE(regWriteE),     .regWriteM(regWriteM), 
-        .RdE(RdE),                 .RdM(RdM),
-        .memWriteE(memWriteE),     .memWriteM(memWriteM),
-        .ALUResultE(ALUResultE),   .ALUResultM(ALUResultM),
-        .extImmE(extImmE),         .extImmM(extImmM)
+        .clk(clk), 
+        .rst(rst),
+        .PCPlus4M(PCPlus4M),       
+        .PCPlus4E(PCPlus4E),
+        .resultSrcE(resultSrcE),   
+        .resultSrcM(resultSrcM),
+        .writeDataE(writeDataE),   
+        .writeDataM(writeDataM),
+        .luiE(luiE),               
+        .luiM(luiM),
+        .regWriteE(regWriteE),     
+        .regWriteM(regWriteM), 
+        .RdE(RdE),                 
+        .RdM(RdM),
+        .memWriteE(memWriteE),     
+        .memWriteM(memWriteM),
+        .ALUResultE(ALUResultE),   
+        .ALUResultM(ALUResultM),
+        .extImmE(extImmE),         
+        .extImmM(extImmM)
     );
 
     PipelineM MStage (
@@ -170,19 +203,32 @@ module RISC_V_Datapath(
 
 
     HazardUnit hazard(
-        .Rs1D(Rs1D), .Rs2D(Rs2D),
-        .Rs1E(Rs1E), .Rs2E(Rs2E),
-        .RdE(RdE), .RdM(RdM), .RdW(RdW), .luiM(luiM),
-        .PCSrcE(PCSrcE), .resultSrc0(resultSrcE[0]), 
-        .regWriteW(regWriteW), .regWriteM(regWriteM), 
-        .stallD(stallD), .stallF(stallF),
-        .flushD(flushD), .flushE(flushE), 
-        .forwardAE(forwardAE), .forwardBE(forwardBE)
+        .Rs1D(Rs1D), 
+        .Rs2D(Rs2D),
+        .Rs1E(Rs1E), 
+        .Rs2E(Rs2E),
+        .RdE(RdE), 
+        .RdM(RdM), 
+        .RdW(RdW), 
+        .luiM(luiM),
+        .PCSrcE(PCSrcE), 
+        .resultSrc0(resultSrcE[0]), 
+        .regWriteW(regWriteW), 
+        .regWriteM(regWriteM), 
+        .stallD(stallD), 
+        .stallF(stallF),
+        .flushD(flushD), 
+        .flushE(flushE), 
+        .forwardAE(forwardAE), 
+        .forwardBE(forwardBE)
     );
 
     BranchController JBprosecc(
-        .branchE(branchE), .jumpE(jumpE), .neg(neg), 
-        .zero(zero), .PCSrcE(PCSrcE)
+        .branchE(branchE), 
+        .jumpE(jumpE), 
+        .neg(neg), 
+        .zero(zero), 
+        .PCSrcE(PCSrcE)
     );
 
 endmodule

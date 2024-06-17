@@ -5,7 +5,7 @@ module BranchController(
     output reg [1:0] PCSrcE
 );
 
-    parameter [2:0] NOB = 3'b000,
+    parameter [2:0] UJ = 3'b000,
                     BEQ = 3'b001,
                     BNE = 3'b010,
                     BLT = 3'b011,
@@ -16,7 +16,7 @@ module BranchController(
     
     always @(jumpE, zero, neg, branchE) begin
         case(branchE)
-            NOB : PCSrcE <= (jumpE == JAL)  ? 2'b01 :
+            UJ : PCSrcE <= (jumpE == JAL)  ? 2'b01 :
                              (jumpE == JALR) ? 2'b10 : 2'b00;
 
             BEQ : PCSrcE <= (zero)           ? 2'b01 : 2'b00;

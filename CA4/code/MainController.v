@@ -37,12 +37,7 @@ module MainController(
                 resultSrcD <= 2'b00;
             end
         
-            S_T: begin
-                ALUOp      <= 2'b00;
-                memWriteD  <= 1'b1;
-                immSrcD    <= 3'b001;
-                ALUSrcD    <= 1'b1;
-            end
+
         
             B_T: begin
                 ALUOp      <= 2'b01;
@@ -56,18 +51,25 @@ module MainController(
                 endcase
             end
         
+            J_T: begin
+                resultSrcD <= 2'b10;
+                immSrcD    <= 3'b011;
+                jumpD      <= 2'b01;
+                regWriteD  <= 1'b1;
+            end
+
             U_T: begin
                 resultSrcD <= 2'b11;
                 immSrcD    <= 3'b100;
                 regWriteD  <= 1'b1;
                 luiD       <= 1'b1;
             end
-        
-            J_T: begin
-                resultSrcD <= 2'b10;
-                immSrcD    <= 3'b011;
-                jumpD      <= 2'b01;
-                regWriteD  <= 1'b1;
+
+            S_T: begin
+                ALUOp      <= 2'b00;
+                memWriteD  <= 1'b1;
+                immSrcD    <= 3'b001;
+                ALUSrcD    <= 1'b1;
             end
         
             LW_T: begin
