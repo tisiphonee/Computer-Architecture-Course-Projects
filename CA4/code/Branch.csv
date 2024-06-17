@@ -1,0 +1,6 @@
+Instruction_type,Instruction,PCSrcE
+B-Type,NOB,jumpE == `JAL ? 2'b01 : (jumpE == `JALR ? 2'b10 : 2'b00)
+B-Type,BEQ,zero ? 2'b01 : 2'b00
+B-Type,BNE,~zero ? 2'b01 : 2'b00
+B-Type,BLT,neg ? 2'b01 : 2'b00
+B-Type,BGE,zero | ~neg ? 2'b01 : 2'b00
