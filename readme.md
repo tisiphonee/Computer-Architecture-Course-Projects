@@ -13,7 +13,5 @@
    - **Status:**
      - 🎉Completed🎉
     
-2. CA1:
-   - **Status:**
-     - 🎉Completed🎉
+
    
