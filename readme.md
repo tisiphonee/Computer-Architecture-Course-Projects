@@ -9,6 +9,12 @@
     - [Algorithm](#algorithm)
     - [How to Use](#how-to-use)
     - [Example Test Cases](#example-test-cases)
+  - [CA2: Single-Cycle RISC-V Processor](#ca2-single-cycle-risc-v-processor)
+    - [Project Overview](#project-overview-1)
+    - [Functionality](#functionality-1)
+    - [How to Use](#how-to-use-1)
+    - [Example Test Cases](#example-test-cases-1)
+- [Documentation](#documentation)
 - [Acknowledgements](#acknowledgements)
 
 ## Projects
@@ -18,7 +24,7 @@
 #### Project Overview
 
 **Description:**
-This project involves designing a 10-bit fixed-point divider. The divider handles unsigned integers with a 6-bit integer part and a 4-bit fractional part. The design includes handling for division operations, overflow conditions, and zero-divisor scenarios. 
+This project involves designing a 10-bit fixed-point divider. The divider handles unsigned integers with a 6-bit integer part and a 4-bit fractional part. The design includes handling for division operations, overflow conditions, and zero-divisor scenarios.
 
 **Status:**
 🎉 Completed 🎉
@@ -45,7 +51,7 @@ The 10-bit fixed-point divider performs division using the following specificati
 
 The division algorithm is implemented as follows:
 
-1. Initialize: 
+1. Initialize:
    - `A(9:0)` = dividend
    - `B(9:0)` = divisor
    - `{ACC[10:0], Q[9:0]}` = `{10'b0, A, 1'b0}`
@@ -78,26 +84,77 @@ The division algorithm is implemented as follows:
 #### Example Test Cases
 
 **Example 1:**
-- **Input:** 
+- **Input:**
   - `A = 0110000010`
   - `B = 0000010000`
-- **Expected Output:** 
+- **Expected Output:**
   - `Q = 0110000010`
 
 **Example 2 (Overflow Case):**
-- **Input:** 
+- **Input:**
   - `A = 0100111001`
   - `B = 0000001000`
 - **Expected Output:**
   - `Q = OVERFLOW!`
 
+### CA2: Single-Cycle RISC-V Processor
+
+#### Project Overview
+
+**Description:**
+This project involves designing a single-cycle RISC-V processor to execute a set of RISC-V instructions. For demonstration purposes, the processor is used to find the maximum value in a 10-element array of 32-bit unsigned integers. While this specific example focuses on array maximum finding, the processor's general-purpose nature means it can be adapted to perform various computational tasks based on the instructions provided.
+
+**Status:**
+🎉 Completed 🎉
+
+#### Functionality
+
+The single-cycle RISC-V processor supports a range of instruction types:
+
+- **R-Type:** `add`, `sub`, `and`, `or`, `slt`, `sltu`
+- **I-Type:** `lw`, `addi`, `xori`, `ori`, `slti`, `sltiu`, `jalr`
+- **S-Type:** `sw`
+- **J-Type:** `jal`
+- **B-Type:** `beq`, `bne`, `blt`, `bge`
+- **U-Type:** `lui`
+
+#### How to Use
+
+1. **Generating Test Cases:**
+   - Open `Generator.ipynb` located in the `Extras` folder.
+   - Run the cells to generate test cases.
+   - This will produce files in the `test_cases` directory:
+     - `arri.mem` with the array data in binary format.
+     - `arrayi.txt` with array values, their binary representations, and the expected maximum value.
+
+2. **Incorporating Test Cases into Simulation:**
+   - Ensure that `data_mem.v` reads the `arri.mem` file.
+   - Open your testbench file and confirm that it is set up to validate against `arrayi.txt`.
+
+3. **Running the Simulation:**
+   - Compile and execute your simulation.
+   - Verify that the output aligns with the expected maximum value specified in `arrayi.txt`.
+
+#### Example Test Cases
+
+**Example 1:**
+- **Input:**
+  - `arr1.mem` contains binary data representing 10 unsigned integers.
+- **Expected Output:**
+  - `array1.txt` provides the array elements with their binary values and the maximum value at the end:
+    ```
+    ...
+    2231429060 || 10000101000000001110011111000100
+    4102770561 || 11110100100010110100111110000001
+    Max: 4102770561 ,11110100100010110100111110000001
+    ```
+
+This output indicates that the maximum value in the array is `4102770561`, with the corresponding binary representation `11110100100010110100111110000001`.
 
 
+## Documentation
 
-
-
-
-
+All data path schemas and control unit tables for each CA project are located in the `CA` directory under `Extras/DP & CU`. Data Path Schemas display data flow diagrams, while Control Unit Tables outline issued control signals or the FSM for the control unit according to project characteristics.
 
 
 ## Acknowledgements
