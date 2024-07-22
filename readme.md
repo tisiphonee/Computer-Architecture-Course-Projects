@@ -154,7 +154,7 @@ This output indicates that the maximum value in the array is `4102770561`, with 
 
 ## Documentation
 
-All data path schemas and control unit tables for each CA project are located in the `CA` directory under `Extras/DP & CU`. Data Path Schemas display data flow diagrams, while Control Unit Tables outline issued control signals or the FSM for the control unit according to project characteristics.
+All data path schemas and control unit tables for each CA project are located in the `CA` directory under `Extras/DP & CU`. Data Path Schemas display data flow diagrams, while Control Unit  outline issued control signals or the FSM for the control unit according to project characteristics.
 
 
 ## Acknowledgements
