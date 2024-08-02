@@ -199,10 +199,10 @@ The multi-cycle RISC-V processor supports a range of instruction types:
   - `array1.txt` provides the array elements with their binary values and the maximum value at the end:
     ```
     ...
-  1005692429 || 00111011111100011010011000001101
-  3521873594 || 11010001111010111000011010111010
-  Max: 3893853562 ,11101000000101110111110101111010
-    ```
+    1005692429 || 00111011111100011010011000001101
+    3521873594 || 11010001111010111000011010111010
+    Max: 3893853562 ,11101000000101110111110101111010
+      ```
 
 This output indicates that the maximum value in the array is `3893853562`, with the corresponding binary representation `11110100100010110100111110000001`.
 
