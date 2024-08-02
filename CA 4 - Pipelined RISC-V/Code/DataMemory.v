@@ -11,7 +11,7 @@ module DataMemory (
     reg [31:0] memoryAddress;
     assign memoryAddress = {memAdr[31:2], 2'b00}; 
 
-    initial $readmemb("test_cases/arr21.mem", memory);
+    initial $readmemb("test_cases/arr1.mem", memory);
 
     always @(posedge clk) begin
         if (memWrite)

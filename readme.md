@@ -175,7 +175,7 @@ The multi-cycle RISC-V processor supports a range of instruction types:
 #### How to Use
 
 1. **Generating Test Cases:**
-   - Open `Assembler&Generator.ipynb` located in the `Extras` folder.
+   - Open `Assembler&Generator.ipynb` located in the `Test Case Genenrator/Extras` folder.
    - Run the cells to generate test cases.
    - This will produce files in the `test_cases` and `test_cases2` directory:
      - `arri.mem` with the instruction and array data in binary format.
@@ -206,6 +206,60 @@ The multi-cycle RISC-V processor supports a range of instruction types:
     ```
 
 This output indicates that the maximum value in the array is `3893853562`, with the corresponding binary representation `11110100100010110100111110000001`.
+
+### CA4: Single-Cycle Pipeline RISC-V Processor
+
+#### Project Overview
+
+**Description:**
+This project involves designing a single-cycle pipeline RISC-V processor to execute a set of RISC-V instructions. For demonstration purposes, the processor is used to find the maximum value in a 10-element array of 32-bit signed integers. While this specific example focuses on array maximum finding, the processor's general-purpose nature means it can be adapted to perform various computational tasks based on the instructions provided.
+
+**Status:**
+🎉 Completed 🎉
+
+#### Functionality
+
+The single-cycle pipeline RISC-V processor supports a range of instruction types:
+
+- **R-Type:** `add`, `sub`, `and`, `or`, `slt`, `sltu`
+- **I-Type:** `lw`, `addi`, `xori`, `ori`, `slti`, `sltiu`, `jalr`
+- **S-Type:** `sw`
+- **J-Type:** `jal`
+- **B-Type:** `beq`, `bne`, `blt`, `bge`
+- **U-Type:** `lui`
+
+#### How to Use
+
+1. **Generating Test Cases:**
+   - Open `Assembler&Generator.ipynb` located in the `Test Case Generator/Extras` folder.
+   - Run the cells to generate test cases.
+   - This will produce files in the `test_cases` directory:
+     - `arri.mem` with the array data in binary format.
+     - `arrayi.txt` with array values, their binary representations, and the expected maximum value.
+
+2. **Incorporating Test Cases into Simulation:**
+   - Ensure that `DataMemory.v` reads the `arri.mem` file.
+   - Open your testbench file and confirm that it is set up to validate against `arrayi.txt`.
+
+3. **Running the Simulation:**
+   - Compile and execute your simulation.
+   - Verify that the output aligns with the expected maximum value specified in `arrayi.txt`.
+
+#### Example Test Cases
+
+**Example 1:**
+- **Input:**
+  - `arr1.mem` contains binary data representing 10 signed integers.
+- **Expected Output:**
+  - `array1.txt` provides the array elements with their binary values and the maximum value at the end:
+    ```
+    ...
+    -943464936 || -0111000001111000010000111101000
+    -1247724080 || -1001010010111101100001000110000
+    Max: -660858875 ,-0b100111011000111110011111111011
+    ```
+
+This output indicates that the maximum value in the array is `-31351528`, with the corresponding binary representation `000000b1110111100110001011101000`.
 
 ## Documentation
 
