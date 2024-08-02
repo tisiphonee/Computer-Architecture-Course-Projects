@@ -151,11 +151,64 @@ The single-cycle RISC-V processor supports a range of instruction types:
 
 This output indicates that the maximum value in the array is `4102770561`, with the corresponding binary representation `11110100100010110100111110000001`.
 
+### CA3: Multi-Cycle RISC-V Processor
+
+#### Project Overview
+
+**Description:**
+This project involves designing a multi-cycle RISC-V processor to execute a set of RISC-V instructions. For demonstration purposes, the processor is used to find the maximum value in a 10-element array of 32-bit unsigned integers. While this specific example focuses on array maximum finding, the processor's general-purpose nature means it can be adapted to perform various computational tasks based on the instructions provided.
+
+**Status:**
+🎉 Completed 🎉
+
+#### Functionality
+
+The multi-cycle RISC-V processor supports a range of instruction types:
+
+- **R-Type:** `add`, `sub`, `and`, `or`, `slt`, `sltu`
+- **I-Type:** `lw`, `addi`, `xori`, `ori`, `slti`, `sltiu`, `jalr`
+- **S-Type:** `sw`
+- **J-Type:** `jal`
+- **B-Type:** `beq`, `bne`, `blt`, `bge`
+- **U-Type:** `lui`
+
+#### How to Use
+
+1. **Generating Test Cases:**
+   - Open `Assembler&Generator.ipynb` located in the `Extras` folder.
+   - Run the cells to generate test cases.
+   - This will produce files in the `test_cases` and `test_cases2` directory:
+     - `arri.mem` with the instruction and array data in binary format.
+     - `arrayi.txt` with array values, their binary representations, and the expected maximum value.
+   - Difference between `test_cases` and `test_cases2` is in the assembly code used for calculating the maximum value.
+
+2. **Incorporating Test Cases into Simulation:**
+   - Ensure that `InstrDataMemory.v` reads the `arri.mem` file.
+   - Open your testbench file and confirm that it is set up to validate against `arrayi.txt`.
+
+3. **Running the Simulation:**
+   - Compile and execute your simulation.
+   - Verify that the output aligns with the expected maximum value specified in `arrayi.txt`.
+
+#### Example Test Cases
+
+**Example 1:**
+- **Input:**
+  - `arr1.mem` contains binary data representing 10 unsigned integers.
+- **Expected Output:**
+  - `array1.txt` provides the array elements with their binary values and the maximum value at the end:
+    ```
+    ...
+  1005692429 || 00111011111100011010011000001101
+  3521873594 || 11010001111010111000011010111010
+  Max: 3893853562 ,11101000000101110111110101111010
+    ```
+
+This output indicates that the maximum value in the array is `3893853562`, with the corresponding binary representation `11110100100010110100111110000001`.
 
 ## Documentation
 
 All data path schemas and control unit tables for each CA project are located in the `CA` directory under `Extras/DP & CU`. Data Path Schemas display data flow diagrams, while Control Unit  outline issued control signals or the FSM for the control unit according to project characteristics.
-
 
 ## Acknowledgements
 
