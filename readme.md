@@ -269,7 +269,8 @@ The single-cycle pipeline RISC-V processor supports a range of instruction types
     Max: -660858875 ,-0b100111011000111110011111111011
     ```
 
-This output indicates that the maximum value in the array is `-31351528`, with the corresponding binary representation `000000b1110111100110001011101000`.
+This output indicates that the maximum value in the array is `-660858875`, with the corresponding binary representation `-0b100111011000111110011111111011` or `011000100111000001100000000101` by taking two's complement.
+
 
 ## Documentation
 
